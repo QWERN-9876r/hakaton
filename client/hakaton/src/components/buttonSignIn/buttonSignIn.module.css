@@ -1,0 +1,8 @@
+.btn {
+    border-radius: 100%;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    background: none;
+    margin-bottom: 10px;
+}
