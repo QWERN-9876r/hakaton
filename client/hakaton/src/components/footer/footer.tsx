@@ -3,7 +3,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import AddIcon from '@mui/icons-material/Add'
 // import Alert from "@mui/material/Alert"
-// import Fab from "@mui/material/Fab"
+import Fab from "@mui/material/Fab"
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -42,9 +42,9 @@ export const Footer: FunctionComponent = () => {
             {/* <Alert severity="warning" className='alert'>
                 Денег нет, но вы держитесь!
             </Alert> */}
-            {/* <Fab color="primary" aria-label="add" className="fab">
+            <Fab color="primary" aria-label="add" className="fab">
                 <AddIcon />
-            </Fab> */}
+            </Fab>
                 <BottomNavigation
                     showLabels
                     value={value}

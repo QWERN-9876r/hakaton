@@ -12,18 +12,18 @@ app.use(cors())
 
 const PORT = 3001
 
-app.get('/indev', async (req, res) => {
+app.get('/transactions', async (req, res) => {
   if(!req.body) { res.sendStatus(400) }
-  if(!req.body.user) { res.sendStatus(400) }
-  const transactions = await transaction.find({ user: req.body.user })
-  res.json(transactions)  
+  const transactions = await transaction.find()
+  res.json(transactions.sort((a, b) => { return Number(a.date) - Number(b.date) }))
 })
 
-app.get('/transactions', (req, res) => {
-    res.json([{comment: 'John', price: 1000, category:'food', date: new Date(Date.now()-1_000_000_000_000)}, {comment: 'not John', price: 300, category:'food', date: new Date(Date.now())}, {comment:'', price: 300, category:'food', date: new Date(Date.now()+1_000_000_000_000)}].sort((a, b) => {
-        return Number(new Date(a.date)) - Number(new Date(b.date))
-    }))
-})
+// app.get('/transactions', (req, res) => {
+//     res.json([{comment: 'John', price: 1000, category:'food', date: new Date(Date.now()-1_000_000_000_000)}, {comment: 'not John', price: 300, category:'food', date: new Date(Date.now())}, {comment:'', price: 300, category:'food', date: new Date(Date.now()+1_000_000_000_000)}].sort((a, b) => {
+//         return Number(new Date(a.date)) - Number(new Date(b.date))
+//     }))
+// })
+
 app.post('/create_transaction', (req, res) => {
     if(!req.body){ res.sendStatus(400) }
     if(!req.body.price || !req.body.category || !req.body.user) { res.sendStatus(400) }
@@ -33,12 +33,10 @@ app.post('/create_transaction', (req, res) => {
     newTransaction.save()
     res.sendStatus(200)
 })
-
 app.get('/register', (req, res) => {
   console.log(req.body)
   res.sendStatus(400)
 })
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })

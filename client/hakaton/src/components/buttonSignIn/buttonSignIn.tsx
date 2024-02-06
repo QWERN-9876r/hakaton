@@ -13,8 +13,7 @@ interface Props {
 }
 
 export const ButtonSignIn: FunctionComponent<Props> = ({companyName, imageUrl}) => {
-    const searchParams = useSearchParams()
-    const callbackUrl = searchParams.get("callbackUrl") || '/profile'
+    const callbackUrl = '/profile'
 
     return (
         <button className={styles.btn} onClick={() => {

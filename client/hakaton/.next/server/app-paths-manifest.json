@@ -1,8 +1,11 @@
 {
-  "/page": "app/page.js",
+  "/_not-found": "app/_not-found.js",
   "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/page": "app/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/signIn/page": "app/signIn/page.js",
+  "/signUp/page": "app/signUp/page.js",
   "/statistic/page": "app/statistic/page.js",
-  "/signUp/page": "app/signUp/page.js"
+  "/profile/page": "app/profile/page.js"
 }

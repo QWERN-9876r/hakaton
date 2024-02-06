@@ -43,7 +43,7 @@ const Statistic: FunctionComponent = () => {
                         data: data.map(transaction => transaction.price)
                     },
                 ]}
-                width={Math.min(screen.width, 500)}
+                width={Math.min(globalThis.innerWidth, 500)}
                 height={300}
                 />
                 <LineChart
@@ -57,10 +57,11 @@ const Statistic: FunctionComponent = () => {
                         data: data.map(transaction => transaction.price)
                     },
                 ]}
-                width={Math.min(screen.width, 500)}
+                width={Math.min(globalThis.innerWidth, 500)}
                 height={300}
                 />
                 <ListOfExpenses expenses={data}/>
+                <div style={{height: '56px', width: 0}}></div>
             </>}
         </div>
     </>

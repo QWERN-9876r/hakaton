@@ -8,7 +8,7 @@ import Image from "next/image"
 // import { Footer } from "@/components/footer/footer"
 // import { signOut } from "next-auth/react"
 
-export default async function Profile() {
+const Profile = async () => {
     // signOut({callbackUrl: '/'})
     const session = await getServerSession(authConfig)
     return <main>
@@ -21,3 +21,5 @@ export default async function Profile() {
         {/* <button onClick={() => {signOut({callbackUrl: '/'})}}>Log Out</button> */}
     </main>
 }
+
+export default Profile
