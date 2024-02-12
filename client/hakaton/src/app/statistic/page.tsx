@@ -1,9 +1,9 @@
 'use client'
 
-import { getAllTransactions, Transaction } from "@/api/transactions/getAllTransactions"
-import { ListOfExpenses } from "@/components/listOfExpenses/listOfExpenses"
-import { LineChart } from "@mui/x-charts"
-import { FunctionComponent, useEffect, useState } from "react"
+import { getAllTransactions, Transaction } from '@/api/transactions/getAllTransactions'
+import { ListOfExpenses } from '@/components/listOfExpenses/listOfExpenses'
+import { LineChart } from '@mui/x-charts'
+import { FunctionComponent, useEffect, useState } from 'react'
 
 function timeFormatter(value: number): string {
     let ans = value.toString().split(' ')
@@ -19,7 +19,7 @@ const Statistic: FunctionComponent = () => {
 
     useEffect(() => {
         try {
-            (async () => {
+            ;(async () => {
                 const sol = await getAllTransactions()
                 setData(sol)
             })()
@@ -28,43 +28,52 @@ const Statistic: FunctionComponent = () => {
         }
     }, [])
 
-    return <>
-        <div>
-            {error ? <h1>Error</h1> : <>
-                <LineChart
-                xAxis={[{
-                    data: data.map((transaction, i) => new Date(transaction.date)),
-                    scaleType: 'time',
-                    valueFormatter: timeFormatter
-                }, ]}
-
-                series={[
-                    {
-                        data: data.map(transaction => transaction.price)
-                    },
-                ]}
-                width={Math.min(globalThis.innerWidth, 500)}
-                height={300}
-                />
-                <LineChart
-                xAxis={[{
-                    data: data.map((transaction, i) => new Date(transaction.date)),
-                    scaleType: 'time',
-                    valueFormatter: timeFormatter
-                }, ]}
-                series={[
-                    {
-                        data: data.map(transaction => transaction.price)
-                    },
-                ]}
-                width={Math.min(globalThis.innerWidth, 500)}
-                height={300}
-                />
-                <ListOfExpenses expenses={data}/>
-                <div style={{height: '56px', width: 0}}></div>
-            </>}
-        </div>
-    </>
+    return (
+        <>
+            <div>
+                {error ? (
+                    <h1>Error</h1>
+                ) : (
+                    <>
+                        <LineChart
+                            xAxis={[
+                                {
+                                    data: data.map((transaction, i) => new Date(transaction.date)),
+                                    scaleType: 'time',
+                                    valueFormatter: timeFormatter,
+                                },
+                            ]}
+                            series={[
+                                {
+                                    data: data.map((transaction) => transaction.price),
+                                },
+                            ]}
+                            width={Math.min(globalThis.innerWidth, 500)}
+                            height={300}
+                        />
+                        <LineChart
+                            xAxis={[
+                                {
+                                    data: data.map((transaction, i) => new Date(transaction.date)),
+                                    scaleType: 'time',
+                                    valueFormatter: timeFormatter,
+                                },
+                            ]}
+                            series={[
+                                {
+                                    data: data.map((transaction) => transaction.price),
+                                },
+                            ]}
+                            width={Math.min(globalThis.innerWidth, 500)}
+                            height={300}
+                        />
+                        <ListOfExpenses expenses={data} />
+                        <div style={{ height: '56px', width: 0 }}></div>
+                    </>
+                )}
+            </div>
+        </>
+    )
 }
 
 export default Statistic

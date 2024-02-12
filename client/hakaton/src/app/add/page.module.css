@@ -1,0 +1,25 @@
+.category {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: show 500ms;
+}
+.currentCategory {
+    width: 70vw;
+    margin: 0;
+}
+.inputs {
+    margin-top: 100px;
+}
+
+@keyframes show {
+    from {
+        opacity: 0.2;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

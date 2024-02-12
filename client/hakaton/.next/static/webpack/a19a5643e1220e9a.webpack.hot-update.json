@@ -1,0 +1,10 @@
+{
+    "c": ["app/add/page", "webpack"],
+    "r": [],
+    "m": [
+        "(app-pages-browser)/./node_modules/@mui/material/FormLabel/FormLabel.js",
+        "(app-pages-browser)/./node_modules/@mui/material/FormLabel/formLabelClasses.js",
+        "(app-pages-browser)/./node_modules/@mui/material/InputLabel/InputLabel.js",
+        "(app-pages-browser)/./node_modules/@mui/material/InputLabel/inputLabelClasses.js"
+    ]
+}

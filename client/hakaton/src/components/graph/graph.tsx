@@ -1,12 +1,12 @@
 'use client'
 
-import { BarChart, HighlightScope, PieChart, PieValueType } from "@mui/x-charts";
-import { FunctionComponent, useState } from "react";
+import { BarChart, HighlightScope, PieValueType } from '@mui/x-charts'
+import { FunctionComponent, useState } from 'react'
 
 interface Props {
     data: PieValueType[]
 }
-export const Graph: FunctionComponent<Props> = ({data}) => {
+export const Graph: FunctionComponent<Props> = ({ data }) => {
     const [highlighted, setHighlighted] = useState('item')
     const [faded, setFaded] = useState('global')
 
@@ -18,17 +18,18 @@ export const Graph: FunctionComponent<Props> = ({data}) => {
         ],
         height: 300,
     }
-    return (
-        (data ?  <BarChart
+    return data ? (
+        <BarChart
             {...barChartsParams}
             series={barChartsParams.series.map((series) => ({
-              ...series,
-              highlightScope: {
-                highlighted,
-                faded,
-              } as HighlightScope,
+                ...series,
+                highlightScope: {
+                    highlighted,
+                    faded,
+                } as HighlightScope,
             }))}
-          />
-        : <div></div>)
+        />
+    ) : (
+        <div></div>
     )
 }

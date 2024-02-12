@@ -1,1 +1,241 @@
-globalThis.__RSC_MANIFEST=(globalThis.__RSC_MANIFEST||{});globalThis.__RSC_MANIFEST["/page"]={"moduleLoading":{"prefix":"/_next/","crossOrigin":null},"ssrModuleMapping":{"864":{"*":{"id":"16966","name":"*","chunks":[],"async":false}},"5613":{"*":{"id":"38771","name":"*","chunks":[],"async":false}},"11902":{"*":{"id":"13225","name":"*","chunks":[],"async":false}},"12229":{"*":{"id":"66853","name":"*","chunks":[],"async":false}},"16929":{"*":{"id":"69786","name":"*","chunks":[],"async":false}},"31778":{"*":{"id":"9295","name":"*","chunks":[],"async":false}},"32486":{"*":{"id":"56254","name":"*","chunks":[],"async":false}},"41801":{"*":{"id":"92542","name":"*","chunks":[],"async":false}},"47690":{"*":{"id":"2583","name":"*","chunks":[],"async":false}},"48955":{"*":{"id":"26840","name":"*","chunks":[],"async":false}},"67331":{"*":{"id":"56052","name":"*","chunks":[],"async":false}},"77831":{"*":{"id":"43982","name":"*","chunks":[],"async":false}},"91699":{"*":{"id":"13268","name":"*","chunks":[],"async":false}}},"edgeSSRModuleMapping":{},"clientModules":{"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/app-router.js":{"id":47690,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/app-router.js":{"id":47690,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/error-boundary.js":{"id":48955,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/error-boundary.js":{"id":48955,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/layout-router.js":{"id":5613,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/layout-router.js":{"id":5613,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/not-found-boundary.js":{"id":11902,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/not-found-boundary.js":{"id":11902,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/render-from-template-context.js":{"id":31778,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/render-from-template-context.js":{"id":31778,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js":{"id":77831,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/static-generation-searchparams-bailout-provider.js":{"id":77831,"name":"*","chunks":[],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/src/components/providers/providers.tsx":{"id":41801,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","126","static/chunks/126-c40a1109f456b553.js","185","static/chunks/app/layout-d7507948c5958074.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}":{"id":99646,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","126","static/chunks/126-c40a1109f456b553.js","185","static/chunks/app/layout-d7507948c5958074.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/globals.css":{"id":63385,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","126","static/chunks/126-c40a1109f456b553.js","185","static/chunks/app/layout-d7507948c5958074.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/src/components/footer/footer.tsx":{"id":864,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/page.module.css":{"id":20345,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/Accordion/Accordion.js":{"id":91699,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/AccordionDetails/AccordionDetails.js":{"id":16929,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/AccordionSummary/AccordionSummary.js":{"id":32486,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/Skeleton/index.js":{"id":67331,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false},"/home/dima/Документы/WEB/hakaton/client/hakaton/src/components/graph/graph.tsx":{"id":12229,"name":"*","chunks":["886","static/chunks/886-596ecbe5659f9272.js","563","static/chunks/563-011480d65f77e69f.js","66","static/chunks/66-daf7a7d9da5aa8c3.js","126","static/chunks/126-c40a1109f456b553.js","947","static/chunks/947-5ffb038454051ef9.js","325","static/chunks/325-6b271fd0214c4da8.js","471","static/chunks/471-3e819aa6be1c0492.js","931","static/chunks/app/page-52cf08b452f7d3e8.js"],"async":false}},"entryCSSFiles":{"/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/_not-found":[],"/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/layout":["static/css/3dbaad1bdc999b5a.css"],"/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/page":["static/css/f04e88de2f547d1d.css"]}}
+globalThis.__RSC_MANIFEST = globalThis.__RSC_MANIFEST || {}
+globalThis.__RSC_MANIFEST['/page'] = {
+    moduleLoading: { prefix: '/_next/', crossOrigin: null },
+    ssrModuleMapping: {
+        '(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js': {
+            '*': {
+                id: '(ssr)/./node_modules/next/dist/client/components/app-router.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js': {
+            '*': {
+                id: '(ssr)/./node_modules/next/dist/client/components/error-boundary.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js': {
+            '*': {
+                id: '(ssr)/./node_modules/next/dist/client/components/layout-router.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js': {
+            '*': {
+                id: '(ssr)/./node_modules/next/dist/client/components/not-found-boundary.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js': {
+            '*': {
+                id: '(ssr)/./node_modules/next/dist/client/components/render-from-template-context.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js':
+            {
+                '*': {
+                    id: '(ssr)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js',
+                    name: '*',
+                    chunks: [],
+                    async: false,
+                },
+            },
+        '(app-pages-browser)/./node_modules/@mui/material/Accordion/Accordion.js': {
+            '*': {
+                id: '(ssr)/./node_modules/@mui/material/Accordion/Accordion.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/@mui/material/AccordionDetails/AccordionDetails.js': {
+            '*': {
+                id: '(ssr)/./node_modules/@mui/material/AccordionDetails/AccordionDetails.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/@mui/material/AccordionSummary/AccordionSummary.js': {
+            '*': {
+                id: '(ssr)/./node_modules/@mui/material/AccordionSummary/AccordionSummary.js',
+                name: '*',
+                chunks: [],
+                async: false,
+            },
+        },
+        '(app-pages-browser)/./node_modules/@mui/material/Skeleton/index.js': {
+            '*': { id: '(ssr)/./node_modules/@mui/material/Skeleton/index.js', name: '*', chunks: [], async: false },
+        },
+        '(app-pages-browser)/./src/components/footer/footer.tsx': {
+            '*': { id: '(ssr)/./src/components/footer/footer.tsx', name: '*', chunks: [], async: false },
+        },
+        '(app-pages-browser)/./src/components/graph/graph.tsx': {
+            '*': { id: '(ssr)/./src/components/graph/graph.tsx', name: '*', chunks: [], async: false },
+        },
+        '(app-pages-browser)/./src/components/providers/providers.tsx': {
+            '*': { id: '(ssr)/./src/components/providers/providers.tsx', name: '*', chunks: [], async: false },
+        },
+    },
+    edgeSSRModuleMapping: {},
+    clientModules: {
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/app-router.js': {
+            id: '(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js',
+            name: '*',
+            chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/app-router.js': {
+            id: '(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js',
+            name: '*',
+            chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/error-boundary.js': {
+            id: '(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js',
+            name: '*',
+            chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/error-boundary.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/layout-router.js': {
+            id: '(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js',
+            name: '*',
+            chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/layout-router.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/not-found-boundary.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/not-found-boundary.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/render-from-template-context.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/render-from-template-context.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/dist/esm/client/components/static-generation-searchparams-bailout-provider.js':
+            {
+                id: '(app-pages-browser)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js',
+                name: '*',
+                chunks: ['app-pages-internals', 'static/chunks/app-pages-internals.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/Accordion/Accordion.js': {
+            id: '(app-pages-browser)/./node_modules/@mui/material/Accordion/Accordion.js',
+            name: '*',
+            chunks: ['app/page', 'static/chunks/app/page.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/AccordionDetails/AccordionDetails.js':
+            {
+                id: '(app-pages-browser)/./node_modules/@mui/material/AccordionDetails/AccordionDetails.js',
+                name: '*',
+                chunks: ['app/page', 'static/chunks/app/page.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/AccordionSummary/AccordionSummary.js':
+            {
+                id: '(app-pages-browser)/./node_modules/@mui/material/AccordionSummary/AccordionSummary.js',
+                name: '*',
+                chunks: ['app/page', 'static/chunks/app/page.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/@mui/material/Skeleton/index.js': {
+            id: '(app-pages-browser)/./node_modules/@mui/material/Skeleton/index.js',
+            name: '*',
+            chunks: ['app/page', 'static/chunks/app/page.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/page.module.css': {
+            id: '(app-pages-browser)/./src/app/page.module.css',
+            name: '*',
+            chunks: ['app/page', 'static/chunks/app/page.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/components/footer/footer.tsx': {
+            id: '(app-pages-browser)/./src/components/footer/footer.tsx',
+            name: '*',
+            chunks: ['app/page', 'static/chunks/app/page.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/components/graph/graph.tsx': {
+            id: '(app-pages-browser)/./src/components/graph/graph.tsx',
+            name: '*',
+            chunks: ['app/page', 'static/chunks/app/page.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"}':
+            {
+                id: '(app-pages-browser)/./node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"}',
+                name: '*',
+                chunks: ['app/layout', 'static/chunks/app/layout.js'],
+                async: false,
+            },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/globals.css': {
+            id: '(app-pages-browser)/./src/app/globals.css',
+            name: '*',
+            chunks: ['app/layout', 'static/chunks/app/layout.js'],
+            async: false,
+        },
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/components/providers/providers.tsx': {
+            id: '(app-pages-browser)/./src/components/providers/providers.tsx',
+            name: '*',
+            chunks: ['app/layout', 'static/chunks/app/layout.js'],
+            async: false,
+        },
+    },
+    entryCSSFiles: {
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/page': ['static/css/app/page.css'],
+        '/home/dima/Документы/WEB/hakaton/client/hakaton/src/app/layout': ['static/css/app/layout.css'],
+    },
+}
