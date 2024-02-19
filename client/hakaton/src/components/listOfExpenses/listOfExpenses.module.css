@@ -1,0 +1,9 @@
+.month {
+    color: azure;
+    /* width: 80vw; */
+    display: flex;
+    justify-content: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid white;
+}

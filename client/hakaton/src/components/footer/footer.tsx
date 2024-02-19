@@ -16,8 +16,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom'
 import Link from 'next/link'
+import { PageLoading } from '../pageLoading/pageLoading'
 
 const PATHS = ['/profile', '/', '/statistic'] as const
+const PAGES_WITH_FAB = ['/', '/statistic']
 
 export const Footer: FunctionComponent = () => {
     const { status } = useSession()
@@ -33,6 +35,11 @@ export const Footer: FunctionComponent = () => {
         }
         router.push(PATHS[value])
     }, [value])
+    useEffect(() => {
+        if (status === 'unauthenticated' && currentPath !== '/signUp' && currentPath !== '/signIn') {
+            router.push('/signUp')
+        }
+    }, [status, currentPath])
 
     return (
         <footer className={styles.footer}>
@@ -40,11 +47,14 @@ export const Footer: FunctionComponent = () => {
                 {/* <Alert severity="warning" className='alert'>
                 Денег нет, но вы держитесь!
             </Alert> */}
-                <Link href="/add">
-                    <Fab color="primary" aria-label="add" className={styles.fab}>
-                        <AddIcon />
-                    </Fab>
-                </Link>
+                {PAGES_WITH_FAB.includes(currentPath) && (
+                    <Link href="/add">
+                        <Fab color="primary" aria-label="add" className={styles.fab}>
+                            <AddIcon />
+                        </Fab>
+                    </Link>
+                )}
+                <PageLoading />
                 <BottomNavigation
                     showLabels
                     value={value}

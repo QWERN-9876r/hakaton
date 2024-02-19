@@ -1,77 +1,79 @@
 'use client'
 
 import { getAllTransactions, Transaction } from '@/api/transactions/getAllTransactions'
-import { ListOfExpenses } from '@/components/listOfExpenses/listOfExpenses'
-import { LineChart } from '@mui/x-charts'
+import { useSession } from 'next-auth/react'
 import { FunctionComponent, useEffect, useState } from 'react'
+import styles from './page.module.css'
+import { ChangeType } from '@/components/changeType/changeType'
+import { MainComponent } from './mainComponent'
 
-function timeFormatter(value: number): string {
-    let ans = value.toString().split(' ')
-    ans.shift()
-    ans.length = 4
-
-    return ans.join(' ')
+interface Data {
+    expenditures: Transaction[]
+    income: Transaction[]
 }
 
 const Statistic: FunctionComponent = () => {
-    const [data, setData] = useState([] as Transaction[])
+    const [data, setData] = useState<Data>({
+        expenditures: [],
+        income: [],
+    })
+    const [earliestTransaction, setEarliestTransaction] = useState({
+        income: '',
+        expenditures: '',
+    })
     const [error, setError] = useState(false)
+    const [type, setType] = useState(0)
+    const session = useSession()
+    const [period, setPeriod] = useState('')
 
     useEffect(() => {
         try {
             ;(async () => {
-                const sol = await getAllTransactions()
-                setData(sol)
+                if (session.status === 'authenticated') {
+                    const sol = await getAllTransactions(session.data?.user?.email as string, period)
+                    if (!data.expenditures.length || !data.income.length)
+                        setEarliestTransaction({
+                            income: sol.income[0].date,
+                            expenditures: sol.expenditures[0].date,
+                        })
+                    setData(sol)
+                }
             })()
         } catch {
             setError(true)
         }
-    }, [])
+    }, [session.status, period])
 
     return (
         <>
-            <div>
-                {error ? (
-                    <h1>Error</h1>
-                ) : (
-                    <>
-                        <LineChart
-                            xAxis={[
-                                {
-                                    data: data.map((transaction, i) => new Date(transaction.date)),
-                                    scaleType: 'time',
-                                    valueFormatter: timeFormatter,
-                                },
-                            ]}
-                            series={[
-                                {
-                                    data: data.map((transaction) => transaction.price),
-                                },
-                            ]}
-                            width={Math.min(globalThis.innerWidth, 500)}
-                            height={300}
+            {session.status === 'authenticated' && (data.expenditures.length || data.income.length) && (
+                <>
+                    <header>
+                        <ChangeType
+                            type={type}
+                            handleChangeType={(event, newValue) => {
+                                setType(newValue)
+                            }}
                         />
-                        <LineChart
-                            xAxis={[
-                                {
-                                    data: data.map((transaction, i) => new Date(transaction.date)),
-                                    scaleType: 'time',
-                                    valueFormatter: timeFormatter,
-                                },
-                            ]}
-                            series={[
-                                {
-                                    data: data.map((transaction) => transaction.price),
-                                },
-                            ]}
-                            width={Math.min(globalThis.innerWidth, 500)}
-                            height={300}
-                        />
-                        <ListOfExpenses expenses={data} />
-                        <div style={{ height: '56px', width: 0 }}></div>
-                    </>
-                )}
-            </div>
+                    </header>
+                    <div>
+                        {error ? (
+                            <h1>Error</h1>
+                        ) : (
+                            <main className={styles.main}>
+                                <MainComponent
+                                    earliestTransaction={earliestTransaction[type ? 'income' : 'expenditures']}
+                                    transactions={data[type ? 'income' : 'expenditures']}
+                                    setPeriod={setPeriod}
+                                    title={type ? 'income' : 'expenditures'}
+                                    period={period}
+                                />
+                                <div style={{ height: '56px', width: 0 }}></div>
+                            </main>
+                        )}
+                    </div>
+                </>
+            )}
         </>
     )
 }

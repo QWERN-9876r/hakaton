@@ -1,0 +1,41 @@
+.graficName {
+    display: flex;
+    color: aliceblue;
+    justify-content: center;
+}
+.main {
+    margin: 0;
+}
+.choosingPeriod {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    gap: 10px;
+    animation: show 500ms;
+}
+.choosingPeriodButton {
+    /* padding: calc(16vw - 50px) 4px; */
+    border-radius: 5px;
+    width: min(16vw, 100px);
+}
+.title {
+    background: none;
+    font-size: 18px;
+    color: aliceblue;
+    width: 100vw;
+}
+.title h1 {
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

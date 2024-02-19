@@ -1,7 +1,6 @@
 {
-    "/page": "app/page.js",
-    "/favicon.ico/route": "app/favicon.ico/route.js",
-    "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-    "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
-    "/add/page": "app/add/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/profile/page": "app/profile/page.js"
 }

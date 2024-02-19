@@ -1,12 +1,13 @@
 import { FunctionComponent } from 'react'
-import { Accordion, AccordionDetails, AccordionSummary, Skeleton } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
+import { splitByMoths } from '@/formaters/splitByMoths'
+import styles from './listOfExpenses.module.css'
 
 interface Expense {
     comment: string
-    price: number
+    amount: number
     category: string
     date: string
-    color?: string
 }
 
 interface Props {
@@ -14,34 +15,25 @@ interface Props {
 }
 
 export const ListOfExpenses: FunctionComponent<Props> = ({ expenses }) => {
-    return (
+    return expenses.length ? (
         <section>
-            {expenses.length ? (
-                expenses.map(({ comment, price, category, date, color }) => {
-                    return (
-                        <Accordion key={date}>
-                            <AccordionSummary id="panel-header" aria-controls="panel-content">
-                                {comment ? comment : category} - {price}
-                            </AccordionSummary>
-                            <AccordionDetails>{new Date(date).toLocaleDateString()}</AccordionDetails>
-                        </Accordion>
-                    )
-                })
-            ) : (
-                <Skeleton>
-                    {new Array(5).fill(0).map((em, i) => {
-                        return (
-                            <Accordion key={i}>
-                                <AccordionSummary
-                                    id="panel-header"
-                                    aria-controls="panel-content"
-                                    style={{ width: '80vw', marginBottom: '5px' }}
-                                ></AccordionSummary>
-                            </Accordion>
-                        )
-                    })}
-                </Skeleton>
-            )}
+            {splitByMoths(expenses).map(({ label, transactions }) => {
+                return (
+                    <div>
+                        <h3 className={styles.month}>{label}</h3>
+                        {transactions.map(({ comment, amount, category, date }) => {
+                            return (
+                                <Accordion key={date + comment + amount + category}>
+                                    <AccordionSummary id="panel-header" aria-controls="panel-content">
+                                        {comment ? comment : category} - {amount}
+                                    </AccordionSummary>
+                                    <AccordionDetails>{new Date(date).toLocaleDateString()}</AccordionDetails>
+                                </Accordion>
+                            )
+                        })}
+                    </div>
+                )
+            })}
         </section>
-    )
+    ) : null
 }

@@ -1,0 +1,14 @@
+.profileInfo {
+    display: flex;
+}
+.containerForButton {
+    justify-content: center;
+    align-items: center;
+}
+.error {
+    color: rgb(238, 37, 37);
+}
+
+.leftMargin {
+    margin-left: 8px;
+}
