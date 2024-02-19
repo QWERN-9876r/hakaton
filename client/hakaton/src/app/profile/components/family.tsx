@@ -1,16 +1,16 @@
 'use client'
 
-import { TextField, Button, Accordion, AccordionSummary } from '@mui/material'
+import { TextField, Button, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import styles from '../page.module.css'
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Api } from '@/api/main'
-import { getUserNameById } from '@/api/family/getUserNameById'
 
 const api = new Api()
 
 const Family = () => {
     const [family, setFamily] = useState<string[]>([])
+    const [names, setNames] = useState<string[]>([])
     const [addedEmail, setAddedEmail] = useState('')
     const [error, setError] = useState('')
     const session = useSession()
@@ -18,11 +18,11 @@ const Family = () => {
     const updateData = async (email: string) => {
         const res = await api.getUsersInFamily(email)
 
-        if (!Array.isArray(res)) return setError(res.error)
+        if (!Array.isArray(res)) return setError(res ? res.error : 'error')
+        setFamily([...res])
 
         for (let i = 0; i < res.length; i++) {
-            const response = await getUserNameById(res[i])
-            console.log(i, response)
+            const response = await api.getUserNameById(res[i])
 
             if ('error' in response) {
                 return setError(response.error)
@@ -30,9 +30,8 @@ const Family = () => {
 
             res[i] = response.name
         }
-        console.log('f')
 
-        setFamily(res)
+        setNames(res)
     }
 
     const addUserInFamily = async () => {
@@ -86,9 +85,14 @@ const Family = () => {
                         >
                             Add
                         </Button>
-                        {family.map((name) => (
+                        {names.map((name, i) => (
                             <Accordion key={name}>
                                 <AccordionSummary>{name}</AccordionSummary>
+                                <AccordionDetails>
+                                    <Button onClick={ async () => {
+                                        const res = await api.deleteUserFromFamily(family[i])
+                                    }} >delete</Button>
+                                </AccordionDetails>
                             </Accordion>
                         ))}
                     </div>

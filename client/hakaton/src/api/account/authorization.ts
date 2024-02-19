@@ -14,7 +14,7 @@ export const authorization: AuthFunction = async (data) => {
     const key = sha256(JSON.stringify(data))
 
     try {
-        const resInJson = await fetch('http://localhost:3001/signIn', {
+        const resInJson = await fetch('http://192.168.1.83:3001/signIn', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

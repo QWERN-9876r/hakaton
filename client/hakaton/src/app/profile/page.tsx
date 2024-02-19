@@ -10,7 +10,7 @@ import { signOut } from 'next-auth/react'
 import Item from '@/components/item/item'
 import Settings from './components/settings'
 import Family from './components/family'
-import { useTheme } from "@mui/material"
+import { useTheme } from '@mui/material'
 
 const Profile: FunctionComponent = () => {
     // const session = await getServerSession(authConfig)
@@ -26,7 +26,7 @@ const Profile: FunctionComponent = () => {
                         component="div"
                         sx={{
                             display: 'grid',
-                            gridTemplateRows: '100px 300px 172px',
+                            gridTemplateRows: '100px 500px 172px',
                         }}
                     >
                         <Item>
@@ -42,7 +42,7 @@ const Profile: FunctionComponent = () => {
                                 </div>
                             )}
                         </Item>
-                        <Item>
+                        <Item sx={{overflow: 'auto'}} >
                             <Family />
                         </Item>
                         <Item>

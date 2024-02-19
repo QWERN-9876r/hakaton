@@ -1,5 +1,5 @@
 export const getUserNameById: (userId: string) => Promise<{ error: string } | { name: string }> = async (userId) => {
-    const res = await fetch(`http://localhost:3001/user_name?id=${userId}`, {
+    const res = await fetch(`http://192.168.1.83:3001/user_name?id=${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

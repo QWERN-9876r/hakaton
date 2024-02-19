@@ -14,17 +14,14 @@ interface Props {
     children: ReactNode
 }
 export const Providers: FunctionComponent<Props> = ({ children }) => {
-
     return (
         <SessionProvider>
             <AppRouterCacheProvider options={{ key: 'css' }}>
-            <ThemeContext.Provider value='light' >
-                <ThemeProvider theme={darkTheme}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        {children}
-                    </LocalizationProvider>
-                </ThemeProvider>
-            </ThemeContext.Provider>
+                <ThemeContext.Provider value="light">
+                    <ThemeProvider theme={darkTheme}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>{children}</LocalizationProvider>
+                    </ThemeProvider>
+                </ThemeContext.Provider>
             </AppRouterCacheProvider>
         </SessionProvider>
     )
