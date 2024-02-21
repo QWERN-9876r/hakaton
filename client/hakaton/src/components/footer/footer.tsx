@@ -17,6 +17,7 @@ import { useSession } from 'next-auth/react'
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom'
 import Link from 'next/link'
 import { PageLoading } from '../pageLoading/pageLoading'
+import { i18n } from '@/data/i18n'
 
 const PATHS = ['/profile', '/', '/statistic'] as const
 const PAGES_WITH_FAB = ['/', '/statistic']
@@ -63,15 +64,15 @@ export const Footer: FunctionComponent = () => {
                     }}
                 >
                     {status === 'loading' ? (
-                        <BottomNavigationAction label="Loading..." icon={<HourglassBottomIcon />} />
+                        <BottomNavigationAction label={i18n.Loading} icon={<HourglassBottomIcon />} />
                     ) : (
                         <BottomNavigationAction
-                            label={status === 'authenticated' ? 'Profile' : 'Log in'}
+                            label={status === 'authenticated' ? i18n.Profile : i18n['Sign In']}
                             icon={status === 'authenticated' ? <AccountCircleIcon /> : <LoginIcon />}
                         />
                     )}
-                    <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-                    <BottomNavigationAction label="Statistic" icon={<BarChartIcon />} />
+                    <BottomNavigationAction label={i18n.Home} icon={<HomeIcon />} />
+                    <BottomNavigationAction label={i18n.Statistic} icon={<BarChartIcon />} />
                 </BottomNavigation>
             </Box>
         </footer>

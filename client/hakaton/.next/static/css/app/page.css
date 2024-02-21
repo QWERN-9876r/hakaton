@@ -2,11 +2,19 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/page.module.css ***!
   \*******************************************************************************************************************************************************************************************************************************************************************/
 .page_grafic__lhrSC {
-    /* margin-bottom: 15px; */
+    display: flex;
+    justify-content: center;
+}
+.page_grafic__lhrSC div {
+    max-width: max(700px, 100vw);
+    min-width: min(700px, 100vw);
 }
 .page_footer__sHKi3 {
     position: fixed;
     bottom: 0;
+}
+.page_main__GlU4n {
+    margin: 0;
 }
 
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\

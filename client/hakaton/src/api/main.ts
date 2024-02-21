@@ -1,3 +1,4 @@
+import { addUserName } from './account/addUserName'
 import { authorization } from './account/authorization'
 import { registration } from './account/registration'
 import { addUserInFamily } from './family/addUserInFamily'
@@ -18,4 +19,5 @@ export class Api {
     getUsersInFamily = getUsersInFamily
     getUserNameById = getUserNameById
     deleteUserFromFamily = deleteUserFromFamily
+    addUserName = addUserName
 }

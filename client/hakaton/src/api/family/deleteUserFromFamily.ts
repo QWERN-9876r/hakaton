@@ -1,8 +1,7 @@
-import { isValidEmail } from '../account/helpers'
-
+import env from '../env.json'
 export const deleteUserFromFamily = (deletedId: string) => {
     try {
-        return fetch(`http://192.168.1.83:3001/add_user_in_family`, {
+        return fetch(`${env.SERVER_URL}/delete_user_in_family`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

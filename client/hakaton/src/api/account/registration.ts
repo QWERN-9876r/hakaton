@@ -1,15 +1,23 @@
 'use server'
 
-import { cookies } from 'next/headers'
+import env from '../env.json'
 import { isValidEmail } from './helpers'
 
 export interface Data {
     email: string
     password: string
 }
+
+export type ErrorMessage =
+    | 'Password must be at least 8 characters long'
+    | 'Invalid email'
+    | 'Ivalid response'
+    | 'Email already in use'
+    | 'falsche email oder password'
+
 export type AuthFunction = (
     data: Data,
-) => Promise<{ ok: true; email: string; id: string; key: string } | { ok: false; error: string }>
+) => Promise<{ ok: true; email: string; id: string; key: string; name?: string } | { ok: false; error: ErrorMessage }>
 
 export const registration: AuthFunction = async (data) => {
     if (data.password.length < 8) {
@@ -19,7 +27,7 @@ export const registration: AuthFunction = async (data) => {
         return { ok: false, error: 'Invalid email' }
     }
     try {
-        const resInJson = await fetch('http://192.168.1.83:3001/registration', {
+        const resInJson = await fetch(`${env.SERVER_URL}/registration`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +35,6 @@ export const registration: AuthFunction = async (data) => {
             body: JSON.stringify(data),
         })
         const res = await resInJson.json()
-        cookies().set('id', res.id)
 
         return res
     } catch (err) {

@@ -1,6 +1,4 @@
-'use server'
-
-import { cookies } from 'next/headers'
+import env from '../env.json'
 import { isValidEmail, sha256 } from './helpers'
 import { AuthFunction } from './registration'
 
@@ -14,7 +12,7 @@ export const authorization: AuthFunction = async (data) => {
     const key = sha256(JSON.stringify(data))
 
     try {
-        const resInJson = await fetch('http://192.168.1.83:3001/signIn', {
+        const resInJson = await fetch(`${env.SERVER_URL}/signIn`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,8 +20,6 @@ export const authorization: AuthFunction = async (data) => {
             body: JSON.stringify({ key }),
         })
         const res = await resInJson.json()
-
-        cookies().set('id', res.id)
 
         return res
     } catch (err) {

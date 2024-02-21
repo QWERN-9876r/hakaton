@@ -38,7 +38,8 @@ const MainComponent: FunctionComponent<Props> = ({ type, handleChangeType }) => 
             amount: type === 1 ? amount : -amount,
             category: currentCategory?.name,
             date: String(date),
-            userEmail: session.data?.user?.email as string,
+            //@ts-ignore
+            userEmail: session.data?.email as string,
         })
 
         ok && router.push('/')
@@ -52,7 +53,7 @@ const MainComponent: FunctionComponent<Props> = ({ type, handleChangeType }) => 
                 )} */}
                 <div className={styles.amountBlock}>
                     <Input
-                        sx={{ marginBottom: '25px' }}
+                        sx={{ marginBottom: '25px', width: window.innerWidth <= 900 ? 150 : 300 }}
                         type="number"
                         value={amount}
                         placeholder="0"
@@ -100,18 +101,24 @@ const MainComponent: FunctionComponent<Props> = ({ type, handleChangeType }) => 
                         <div className={styles.changeDateDiv}>
                             <DatePicker value={dayjs(date)} onChange={(value) => setDate(value as dayjs.Dayjs)} />
                         </div>
-                        <TextField
-                            variant="standard"
-                            label="comment"
-                            sx={{ display: 'block' }}
-                            value={comment}
-                            placeholder="comment"
-                            onChange={(event) => setComment(event.target.value)}
-                        />
+                        <div className={styles.comment}>
+                            <TextField
+                                variant="standard"
+                                label="comment"
+                                sx={{ display: 'block', width: 500 }}
+                                value={comment}
+                                placeholder="comment"
+                                onChange={(event) => setComment(event.target.value)}
+                            />
+                        </div>
                     </section>
                     <div className={styles.addButton}>
                         <Button
-                            sx={{ width: 'min(50vw, 250px)', cursor: 'pointer', borderRadius: '10px' }}
+                            sx={{
+                                width: window.innerWidth >= 900 ? 350 : 'min(50vw, 250px)',
+                                cursor: 'pointer',
+                                borderRadius: '10px',
+                            }}
                             color="primary"
                             variant="contained"
                             onClick={createTransaction}

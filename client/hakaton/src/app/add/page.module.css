@@ -1,6 +1,6 @@
 .header {
     box-sizing: border-box;
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 .categories {
     display: grid;
@@ -8,6 +8,7 @@
     grid-column-gap: 0;
     grid-row-gap: 10px;
 }
+
 .category {
     background-color: rgb(62, 64, 75);
     display: flex;
@@ -49,20 +50,24 @@
 }
 .inputs {
     margin: 50px 0;
-    padding: 0 25px;
+    min-width: 0;
 }
 .changeDateDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
     margin-bottom: 25px;
 }
 .changeDate {
-    padding: 5px;
+    /* padding: 5px; */
     background-color: rgb(43, 69, 90);
 }
 .inputs input {
     display: block;
+    min-width: 0;
 }
 .addButton {
     position: fixed;
@@ -70,6 +75,28 @@
     display: flex;
     justify-content: center;
     bottom: 75px;
+}
+
+.comment {
+    margin-left: calc(50vw - 125px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment input {
+    width: 250px;
+}
+
+@media (min-width: 900px) {
+    .categories {
+        grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+    }
+    .comment {
+        margin-left: 0;
+    }
+    .comment input {
+        width: 500px;
+    }
 }
 
 @keyframes show {

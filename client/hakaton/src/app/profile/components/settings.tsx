@@ -8,14 +8,15 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import CurrencyYenIcon from '@mui/icons-material/CurrencyYen'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
+import { i18n } from '@/data/i18n'
 
 const Settings = () => {
     return (
         <>
-            <h3>Settings</h3>
+            <h3>{i18n.Settings}</h3>
             <div className={styles.profileInfo}>
                 <div>
-                    <h4>Theme</h4>
+                    <h4>{i18n.Theme}</h4>
                     <ToggleButtonGroup>
                         <ToggleButton value="dark">
                             <DarkModeIcon />
@@ -31,18 +32,18 @@ const Settings = () => {
                             signOut()
                         }}
                     >
-                        Sign Out
+                        {i18n['Sign Out']}
                     </Button>
                 </div>
                 <div className={styles.leftMargin}>
-                    <h4>Language</h4>
-                    <ToggleButtonGroup>
-                        <ToggleButton value="0">RU</ToggleButton>
-                        <ToggleButton value="1">EN</ToggleButton>
+                    <h4>{i18n.Language}</h4>
+                    <ToggleButtonGroup onChange={(event, value) => localStorage.setItem('lang', value as 'ru' | 'en')}>
+                        <ToggleButton value="ru">RU</ToggleButton>
+                        <ToggleButton value="en">EN</ToggleButton>
                     </ToggleButtonGroup>
                 </div>
                 <div className={styles.leftMargin}>
-                    <h4>Currency</h4>
+                    <h4>{i18n.Currency}</h4>
                     <ToggleButtonGroup>
                         <ToggleButton value="0">
                             <CurrencyRubleIcon />

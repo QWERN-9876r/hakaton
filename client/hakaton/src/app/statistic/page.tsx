@@ -6,6 +6,8 @@ import { FunctionComponent, useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { ChangeType } from '@/components/changeType/changeType'
 import { MainComponent } from './mainComponent'
+import { i18n } from '@/data/i18n'
+import { getLang } from '@/data/getLang'
 
 interface Data {
     expenditures: Transaction[]
@@ -30,12 +32,19 @@ const Statistic: FunctionComponent = () => {
         try {
             ;(async () => {
                 if (session.status === 'authenticated') {
-                    const sol = await getAllTransactions(session.data?.user?.email as string, period)
-                    if (!data.expenditures.length || !data.income.length)
+                    //@ts-ignore
+                    const sol = await getAllTransactions(session.data?.email as string, period)
+                    console.log(sol)
+
+                    if (
+                        !data.expenditures.length ||
+                        (!data.income.length && sol.expenditures.length && sol.income.length)
+                    ) {
                         setEarliestTransaction({
-                            income: sol.income[0].date,
-                            expenditures: sol.expenditures[0].date,
+                            income: sol.income[sol.income.length - 1].date,
+                            expenditures: sol.expenditures[sol.income.length - 1].date,
                         })
+                    }
                     setData(sol)
                 }
             })()
@@ -46,7 +55,7 @@ const Statistic: FunctionComponent = () => {
 
     return (
         <>
-            {session.status === 'authenticated' && (data.expenditures.length || data.income.length) && (
+            {session.status === 'authenticated' && (!!data.expenditures.length || !!data.income.length) && (
                 <>
                     <header>
                         <ChangeType
@@ -58,14 +67,14 @@ const Statistic: FunctionComponent = () => {
                     </header>
                     <div>
                         {error ? (
-                            <h1>Error</h1>
+                            <h1>{i18n.Error}</h1>
                         ) : (
                             <main className={styles.main}>
                                 <MainComponent
                                     earliestTransaction={earliestTransaction[type ? 'income' : 'expenditures']}
                                     transactions={data[type ? 'income' : 'expenditures']}
                                     setPeriod={setPeriod}
-                                    title={type ? 'income' : 'expenditures'}
+                                    title={type ? i18n.income : i18n.expenditures}
                                     period={period}
                                 />
                                 <div style={{ height: '56px', width: 0 }}></div>

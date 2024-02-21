@@ -5,6 +5,7 @@ import styles from '../page.module.css'
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Api } from '@/api/main'
+import { i18n } from '@/data/i18n'
 
 const api = new Api()
 
@@ -35,28 +36,33 @@ const Family = () => {
     }
 
     const addUserInFamily = async () => {
-        const res = await api.addUserInFamily(session.data?.user?.email as string, addedEmail)
+        //@ts-ignore
+        const res = await api.addUserInFamily(session.data?.email as string, addedEmail)
 
         if (!res || 'error' in res) return setError(res?.error || 'error')
-        else updateData(session.data?.user?.email as string)
+        //@ts-ignore
+        else updateData(session.data?.email as string)
     }
 
     useEffect(() => {
-        if (session.data?.user?.email) updateData(session.data?.user?.email)
+        //@ts-ignore
+        if (session.data?.email) updateData(session.data?.email)
     }, [session])
 
     const createFamily = async () => {
-        if (!session.data?.user?.email) return
-
-        const res = await api.createFamily(session.data.user?.email as string)
+        //@ts-ignore
+        if (!session.data?.email) return
+        //@ts-ignore
+        const res = await api.createFamily(session.data.email as string)
 
         if (res?.error) setError(res.error)
-        else updateData(session.data?.user?.email)
+        //@ts-ignore
+        else updateData(session.data?.email)
     }
 
     return (
         <>
-            <h3>Family</h3>
+            <h3>{i18n.Family}</h3>
             {!family.length ? (
                 <div className={`${styles.profileInfo} ${styles.containerForButton}`}>
                     <div>
@@ -69,8 +75,9 @@ const Family = () => {
             ) : (
                 <>
                     <br />
-                    <h5>Add user to family:</h5>
+                    <h5>{i18n['Add user to family']}:</h5>
                     <div>
+                        <div>
                         <TextField
                             variant="standard"
                             label="Email"
@@ -83,18 +90,29 @@ const Family = () => {
                             variant="contained"
                             onClick={addUserInFamily}
                         >
-                            Add
+                            {i18n.Add}
                         </Button>
-                        {names.map((name, i) => (
-                            <Accordion key={name}>
-                                <AccordionSummary>{name}</AccordionSummary>
-                                <AccordionDetails>
-                                    <Button onClick={ async () => {
-                                        const res = await api.deleteUserFromFamily(family[i])
-                                    }} >delete</Button>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
+                        </div>
+                        <div style={{marginTop: 16}} >
+                            {names.map((name, i) => (
+                                <Accordion key={name}>
+                                    <AccordionSummary>{name}</AccordionSummary>
+                                    <AccordionDetails>
+                                        <Button
+                                            onClick={async () => {
+                                                const res = await api.deleteUserFromFamily(family[i])
+
+                                                console.log(res)
+                                                //@ts-ignore
+                                                updateData(session.data?.email as string)
+                                            }}
+                                        >
+                                            delete
+                                        </Button>
+                                    </AccordionDetails>
+                                </Accordion>
+                            ))}
+                        </div>
                     </div>
                 </>
             )}

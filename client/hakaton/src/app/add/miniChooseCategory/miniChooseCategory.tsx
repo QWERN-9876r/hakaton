@@ -17,7 +17,7 @@ export const MiniChooseCategory: FunctionComponent<Props> = ({
     setShowMoreCategories,
     currentCategory,
 }) => {
-    const size = categories.length === 6 ? 6 : 5
+    const size = window.innerWidth <= 900 ? (categories.length === 6 ? 6 : 5) : 50
 
     return (
         <div style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}>
@@ -33,7 +33,7 @@ export const MiniChooseCategory: FunctionComponent<Props> = ({
                             {name}
                         </button>
                     ))}
-                {categories.length >= 6 && (
+                {categories.length >= size && (
                     <button onClick={() => setShowMoreCategories(true)} className={styles.minCategory}>
                         <MoreHorizIcon sx={{ width: 50, height: 50, color: 'black' }} />
                         more

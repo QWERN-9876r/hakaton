@@ -19,6 +19,7 @@ export const authConfig: AuthOptions = {
             credentials: {
                 id: {},
                 email: {},
+                name: {},
             },
             async authorize(credentials) {
                 return credentials as User
@@ -27,5 +28,21 @@ export const authConfig: AuthOptions = {
     ],
     pages: {
         signIn: '/signIn',
+    },
+    callbacks: {
+        // async jwt({token, user, trigger, session}) {
+        //     if (trigger === 'update') {
+        //         return {...token, ...session.user}
+        //     }
+
+        //     return {...token, ...user}
+        // },
+        async session({ token, user, trigger, session }) {
+            if (trigger === 'update') {
+                return { data: { ...token, ...session.user } }
+            }
+
+            return { ...token, ...user }
+        },
     },
 }

@@ -1,7 +1,15 @@
 .grafic {
-    /* margin-bottom: 15px; */
+    display: flex;
+    justify-content: center;
+}
+.grafic div {
+    max-width: max(700px, 100vw);
+    min-width: min(700px, 100vw);
 }
 .footer {
     position: fixed;
     bottom: 0;
+}
+.main {
+    margin: 0;
 }

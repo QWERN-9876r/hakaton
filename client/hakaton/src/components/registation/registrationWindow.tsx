@@ -7,7 +7,8 @@ import { ButtonSignIn } from '../buttonSignIn/buttonSignIn'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
-import { AuthFunction, Data } from '@/api/account/registration'
+import type { AuthFunction, ErrorMessage } from '@/api/account/registration'
+import { i18n } from '@/data/i18n'
 
 interface Props {
     name: 'Sign Up' | 'Sign In'
@@ -17,7 +18,7 @@ interface Props {
 export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+    const [error, setError] = useState<ErrorMessage | ''>('')
     const router = useRouter()
 
     const heandler = async () => {
@@ -26,9 +27,9 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback })
         if (!res.ok) {
             setError(res.error)
         } else {
-            const { email, id } = res
+            const { email, id, name } = res
 
-            signIn('credentials', { email, id })
+            signIn('credentials', { email, id, name: name || '' })
             router.push('/profile')
         }
     }
@@ -36,7 +37,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback })
     return (
         <section className={styles.mainInner}>
             <Card variant="outlined" className={styles.mainCard}>
-                <h1 className={styles.heading}>{name}</h1>
+                <h1 className={styles.heading}>{i18n[name]}</h1>
                 <TextField
                     variant="standard"
                     label="Email"
@@ -47,24 +48,24 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback })
                     <TextField
                         className={styles.passwordInput}
                         variant="standard"
-                        label="Password"
+                        label={i18n.Password}
                         type="password"
                         onChange={(evt) => setPassword(evt.target.value)}
                     />
                 </div>
-                {error && <p className={styles.error}>{error}</p>}
+                {error && <p className={styles.error}>{i18n[error]}</p>}
                 <section className={styles.otherLogIn}>
                     <ButtonSignIn companyName="google" imageUrl="https://authjs.dev/img/providers/google.svg" />
                     <ButtonSignIn companyName="yandex" imageUrl="yandex icon.svg" />
                 </section>
                 <Button variant="contained" color="primary" onClick={heandler}>
-                    {name}
+                    {i18n[name]}
                 </Button>
             </Card>
             <div className={styles.alreadyRegConteiner}>
                 <Link href={name === 'Sign Up' ? '/signIn' : '/signUp'}>
                     <Button variant="text" color="primary" className={styles.alreadyReg}>
-                        {name === 'Sign Up' ? 'Already Registered' : "Don't have an account"}
+                        {name === 'Sign Up' ? i18n['Already Registered'] : i18n["Don't have an account"]}
                     </Button>
                 </Link>
             </div>

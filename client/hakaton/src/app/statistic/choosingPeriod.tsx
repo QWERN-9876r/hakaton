@@ -4,39 +4,36 @@ import { FunctionComponent, MouseEvent, useState } from 'react'
 import styles from './page.module.css'
 import { ToggleButtonGroup, ToggleButton } from '@mui/material'
 import dayjs from 'dayjs'
+import { i18n } from '@/data/i18n'
 
 const periods = [
     {
-        name: 'week',
-        label: 'week', // i18n
-    },
-    {
         name: 'month',
-        label: 'month', // i18n
+        label: i18n['month'],
     },
     {
         name: '3 months',
-        label: '3 months', // i18n
+        label: i18n['3 months'],
     },
     {
         name: '6 months',
-        label: '6 months', // i18n
+        label: i18n['6 months'],
     },
     {
         name: 'year',
-        label: 'year', // i18n
+        label: i18n['year'],
     },
     {
         name: 'all',
-        label: 'all', // i18n
+        label: i18n['all'],
     },
-]
+] as const
 
 interface Props {
     onChange: (value: string) => void
     earliestTransaction: string
     title: string
-    period: string
+    period: 'month' | '3 months' | '6 months' | 'year' | 'all'
 }
 function getDistForThisPeriod(date: string, quantityMoths: number) {
     const currentDate = dayjs(Date.now())
@@ -55,18 +52,17 @@ export const ChoosingPeriod: FunctionComponent<Props> = ({ onChange, earliestTra
     let disabledCount = 0
 
     if (earliestTransaction) {
-        if (!getDistForThisPeriod(earliestTransaction, 12)) disabledCount = 5
-        else if (!getDistForThisPeriod(earliestTransaction, 6)) disabledCount = 4
-        else if (!getDistForThisPeriod(earliestTransaction, 3)) disabledCount = 3
-        else if (!getDistForThisPeriod(earliestTransaction, 1)) disabledCount = 2
-        else if (Date.now() - dayjs(earliestTransaction).millisecond() > 6.048e8) disabledCount = 1
+        if (!getDistForThisPeriod(earliestTransaction, 12)) disabledCount = 4
+        else if (!getDistForThisPeriod(earliestTransaction, 6)) disabledCount = 3
+        else if (!getDistForThisPeriod(earliestTransaction, 3)) disabledCount = 2
+        else if (!getDistForThisPeriod(earliestTransaction, 1)) disabledCount = 1
     }
 
     return (
         <>
             <button onClick={() => setShow((show) => !show)} className={styles.title}>
                 <h1>
-                    {title} {period && `by ${period}`}
+                    {title} {(period && period[0] !== 'all') && `${i18n.by} ${i18n[period]}`}
                 </h1>
             </button>
             {show && (

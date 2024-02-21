@@ -1,3 +1,5 @@
+import env from '../env.json'
+
 interface Body {
     comment: string
     amount: number
@@ -8,7 +10,7 @@ interface Body {
 
 export const createTransaction = async (body: Body) => {
     try {
-        await fetch('http://192.168.1.83:3001/create_transaction', {
+        await fetch(`${env.SERVER_URL}/create_transaction`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

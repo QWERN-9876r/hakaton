@@ -1,6 +1,7 @@
+import env from '../env.json'
 export const createFamily = async (email: string) => {
     try {
-        const res = await fetch(`http://192.168.1.83:3001/create_family`, {
+        const res = await fetch(`${env.SERVER_URL}/create_family`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

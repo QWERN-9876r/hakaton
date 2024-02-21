@@ -18,7 +18,7 @@ export const MainComponent: FunctionComponent = () => {
     useEffect(() => {
         if (session.status === 'authenticated') {
             ;(async () => {
-                setTransactions(await getAllTransactions(session.data?.user?.email as string))
+                setTransactions(await getAllTransactions(session.data?.email as string))
             })()
         }
     }, [session.status === 'authenticated'])

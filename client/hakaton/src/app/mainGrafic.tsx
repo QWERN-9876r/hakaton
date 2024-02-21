@@ -11,7 +11,9 @@ interface Props {
 export const MainGrafic: FunctionComponent<Props> = ({ transactions }) => {
     return (
         <div className={styles.grafic}>
-            <BarChart height={300} {...formatByMainGrafic(transactions.expenditures, transactions.income)} />
+            <div>
+                <BarChart height={300} {...formatByMainGrafic(transactions.expenditures, transactions.income)} />
+            </div>
         </div>
     )
 }

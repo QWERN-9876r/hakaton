@@ -33,15 +33,17 @@ export const MainComponent: FunctionComponent<Props> = ({
                     onChange={(newValue) => setPeriod(newValue)}
                 />
             </div>
-            <PieChart
-                series={[
-                    {
-                        data: mergeTransactionsByCategory(transactions),
-                    },
-                ]}
-                width={graficWidth - 50}
-                height={200}
-            />
+            <div className={styles.chart}>
+                <PieChart
+                    series={[
+                        {
+                            data: mergeTransactionsByCategory(transactions),
+                        },
+                    ]}
+                    width={graficWidth - 50}
+                    height={window.innerWidth >= 900 ? graficWidth - 200 : 250}
+                />
+            </div>
             <ListOfExpenses expenses={transactions} />
         </>
     )

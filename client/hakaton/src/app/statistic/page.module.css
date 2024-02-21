@@ -6,12 +6,17 @@
 .main {
     margin: 0;
 }
+.chart {
+    display: flex;
+    justify-content: center;
+}
 .choosingPeriod {
     margin-top: 10px;
     margin-left: 10px;
     display: flex;
     gap: 10px;
     animation: show 500ms;
+    justify-content: center;
 }
 .choosingPeriodButton {
     /* padding: calc(16vw - 50px) 4px; */
