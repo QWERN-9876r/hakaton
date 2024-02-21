@@ -105,22 +105,17 @@ app.post('/add_user_in_family', async (req, res) => {
 })
 
 app.post('/delete_user_in_family', async (req, res) => {
-    if (!req.body || !req.body.email || !req.body.addedEmail) {
+    if (!req.body || !req.body.deletedId) {
         return res.sendStatus(400)
     }
 
-    const user = await users.findOne({ email: req.body.email })
-    const addedUser = await users.findOne({ email: req.body.addedEmail })
-
-    if (!user || !addedUser) return res.json({ error: 'No such user' })
-
-    const thisFamily = await familiesCollection.findOne({ participants: { $all: [user._id] } })
+    const thisFamily = await familiesCollection.findOne({ participants: { $all: [deletedId] } })
 
     if (!thisFamily) return res.json({ error: 'No such family' })
-    thisFamily.participants.push(addedUser._id)
+    thisFamily.participants = thisFamily.participants.filter((id: string) => id !== deletedId)
     familiesCollection.updateOne(
-        { participants: { $all: [user._id] } },
-        { $unset: { participants: thisFamily.participants } },
+        { participants: { $all: [deletedId] } },
+        { $set: { participants: thisFamily.participants } },
     )
 
     res.sendStatus(200)
