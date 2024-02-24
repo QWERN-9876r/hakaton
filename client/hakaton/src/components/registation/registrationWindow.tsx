@@ -27,9 +27,9 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback })
         if (!res.ok) {
             setError(res.error)
         } else {
-            const { email, id, name } = res
+            const { email, id, name, key } = res
 
-            signIn('credentials', { email, id, name: name || '' })
+            signIn('credentials', { email, id, name: name || '', key })
             router.push('/profile')
         }
     }

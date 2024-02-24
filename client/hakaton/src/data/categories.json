@@ -1,39 +1,70 @@
 [
     [
         {
-            "name": "шоппинг"
+            "name": "шоппинг",
+            "icon": "/icons/shopping.png"
         },
         {
-            "name": "красота"
+            "name": "красота",
+            "icon": "/icons/beauty.png"
         },
         {
-            "name": "подарки"
+            "name": "подарки",
+            "icon": "/icons/presents.png"
         },
         {
-            "name": "отдых"
+            "name": "отдых",
+            "icon": "/icons/entertainments.png"
         },
         {
-            "name": "дом"
+            "name": "дом",
+            "icon": "/icons/household.png"
         },
         {
-            "name": "питомцы"
+            "name": "питомцы",
+            "icon": "/icons/pets.png"
         },
         {
-            "name": "питание"
+            "name": "питание",
+            "icon": "/icons/food.png"
         },
         {
-            "name": "ЖКХ"
+            "name": "ЖКХ",
+            "icon": "/icons/HCS.png"
         },
         {
-            "name": "транспорт"
+            "name": "транспорт",
+            "icon": "/icons/transport.png"
+        },
+        {
+            "name": "Здоровье",
+            "icon": "/icons/health.png"
+        },
+        {
+            "name": "подписки",
+            "icon": "/icons/subscriptions.png"
+        },
+        {
+            "name": "услуги",
+            "icon": "/icons/services.png"
         }
     ],
     [
         {
-            "name": "депозит"
+            "name": "депозит",
+            "icon": "/icons/deposit.png"
         },
         {
-            "name": "ЗП"
+            "name": "работа",
+            "icon": "/icons/work.png"
+        },
+        {
+            "name": "инвестиции",
+            "icon": "/icons/investment.png"
+        },
+        {
+            "name": "бизнес",
+            "icon": "/icons/business.png"
         }
     ]
 ]

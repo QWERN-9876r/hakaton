@@ -1,8 +1,10 @@
+import { Currency } from '../account/getUserCurrency'
 import env from '../env.json'
 
 export interface Transaction {
     comment: string
     amount: number
+    currency?: Currency
     category: string
     date: string
 }

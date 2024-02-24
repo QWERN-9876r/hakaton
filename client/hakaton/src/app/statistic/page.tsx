@@ -7,7 +7,7 @@ import styles from './page.module.css'
 import { ChangeType } from '@/components/changeType/changeType'
 import { MainComponent } from './mainComponent'
 import { i18n } from '@/data/i18n'
-import { getLang } from '@/data/getLang'
+import { Period } from './choosingPeriod'
 
 interface Data {
     expenditures: Transaction[]
@@ -26,7 +26,7 @@ const Statistic: FunctionComponent = () => {
     const [error, setError] = useState(false)
     const [type, setType] = useState(0)
     const session = useSession()
-    const [period, setPeriod] = useState('')
+    const [period, setPeriod] = useState<Period | ''>('')
 
     useEffect(() => {
         try {
@@ -76,6 +76,7 @@ const Statistic: FunctionComponent = () => {
                                     setPeriod={setPeriod}
                                     title={type ? i18n.income : i18n.expenditures}
                                     period={period}
+                                    isIncome={!!type}
                                 />
                                 <div style={{ height: '56px', width: 0 }}></div>
                             </main>

@@ -1,7 +1,7 @@
 'use server'
 
 import env from '../env.json'
-import { isValidEmail } from './helpers'
+import { isValidEmail, sha256 } from './helpers'
 
 export interface Data {
     email: string
@@ -35,8 +35,9 @@ export const registration: AuthFunction = async (data) => {
             body: JSON.stringify(data),
         })
         const res = await resInJson.json()
+        const key = sha256(JSON.stringify(data))
 
-        return res
+        return { ...res, key }
     } catch (err) {
         console.error(err)
         return { ok: false, error: 'Ivalid response' }

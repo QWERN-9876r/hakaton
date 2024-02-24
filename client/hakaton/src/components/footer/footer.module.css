@@ -3,9 +3,7 @@
     bottom: 0;
 }
 .fab {
-    left: calc(90vw - 56px);
+    left: calc(95vw - 56px);
     position: fixed;
-    bottom: 5vw;
-    margin-left: 5vw;
-    width: 80vw;
+    bottom: 86px;
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { FunctionComponent, MouseEvent, useState } from 'react'
+import { FunctionComponent, useState } from 'react'
 import styles from './page.module.css'
 import { ToggleButtonGroup, ToggleButton } from '@mui/material'
 import dayjs from 'dayjs'
@@ -29,11 +29,13 @@ const periods = [
     },
 ] as const
 
+export type Period = 'month' | '3 months' | '6 months' | 'year' | 'all'
+
 interface Props {
     onChange: (value: string) => void
     earliestTransaction: string
     title: string
-    period: 'month' | '3 months' | '6 months' | 'year' | 'all'
+    period: Period | ''
 }
 function getDistForThisPeriod(date: string, quantityMoths: number) {
     const currentDate = dayjs(Date.now())
@@ -62,7 +64,7 @@ export const ChoosingPeriod: FunctionComponent<Props> = ({ onChange, earliestTra
         <>
             <button onClick={() => setShow((show) => !show)} className={styles.title}>
                 <h1>
-                    {title} {(period && period[0] !== 'all') && `${i18n.by} ${i18n[period]}`}
+                    {title} {period && period[0] !== 'all' && `${i18n.by} ${i18n[period]}`}
                 </h1>
             </button>
             {show && (

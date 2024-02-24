@@ -1,6 +1,7 @@
 import { Transaction } from '@/api/transactions/getAllTransactions'
 
 export function mergeTransactionsByDate(transactions: Transaction[]) {
+    transactions = structuredClone(transactions)
     const del = new Array()
 
     for (let i = 0; i < transactions.length - 1; i++) {

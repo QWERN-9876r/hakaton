@@ -12,18 +12,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/profile/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/profile/page.css",
-      "static/chunks/app/profile/page.js"
-    ],
-    "/profile/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/profile/layout.css",
-      "static/chunks/app/profile/layout.js"
-    ],
     "/signUp/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -36,17 +24,29 @@
       "static/css/app/signUp/layout.css",
       "static/chunks/app/signUp/layout.js"
     ],
-    "/statistic/layout": [
+    "/profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/statistic/layout.css",
-      "static/chunks/app/statistic/layout.js"
+      "static/css/app/profile/page.css",
+      "static/chunks/app/profile/page.js"
+    ],
+    "/profile/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/profile/layout.css",
+      "static/chunks/app/profile/layout.js"
     ],
     "/statistic/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/statistic/page.css",
       "static/chunks/app/statistic/page.js"
+    ],
+    "/statistic/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/statistic/layout.css",
+      "static/chunks/app/statistic/layout.js"
     ],
     "/add/page": [
       "static/chunks/webpack.js",
@@ -59,18 +59,6 @@
       "static/chunks/main-app.js",
       "static/css/app/add/layout.css",
       "static/chunks/app/add/layout.js"
-    ],
-    "/signIn/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/signIn/page.css",
-      "static/chunks/app/signIn/page.js"
-    ],
-    "/signIn/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/signIn/layout.css",
-      "static/chunks/app/signIn/layout.js"
     ]
   }
 }

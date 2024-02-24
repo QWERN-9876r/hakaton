@@ -20,6 +20,7 @@ export const authConfig: AuthOptions = {
                 id: {},
                 email: {},
                 name: {},
+                key: {},
             },
             async authorize(credentials) {
                 return credentials as User
@@ -37,6 +38,7 @@ export const authConfig: AuthOptions = {
 
         //     return {...token, ...user}
         // },
+        // @ts-ignore
         async session({ token, user, trigger, session }) {
             if (trigger === 'update') {
                 return { data: { ...token, ...session.user } }

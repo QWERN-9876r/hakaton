@@ -5,11 +5,11 @@ export function mergeTransactionsByCategory(transactions: Transaction[]) {
 
     for (const { amount, category } of transactions) {
         if (category in categories) {
-            categories[category].value += amount
+            categories[category].value += Math.abs(amount)
         } else {
             categories[category] = {
                 id: category,
-                value: amount,
+                value: Math.abs(amount),
                 label: category,
             }
         }

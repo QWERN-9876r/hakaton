@@ -48,11 +48,6 @@ main {
         margin-left: 0.5vw;
         width: 98vw;
     }
-    .fab {
-        left: calc(90vw - 56px);
-        position: fixed;
-        bottom: 0.5vw;
-    }
     main {
         margin: 1vw;
     }

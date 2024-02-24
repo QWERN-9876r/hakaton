@@ -21,7 +21,7 @@ export const authorization: AuthFunction = async (data) => {
         })
         const res = await resInJson.json()
 
-        return res
+        return { ...res, key }
     } catch (err) {
         console.error(err)
         return { ok: false, error: 'Ivalid response' }

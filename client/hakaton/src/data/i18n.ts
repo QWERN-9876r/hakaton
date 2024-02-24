@@ -85,7 +85,7 @@ export const i18n = (
             ['6 months']: '6 months',
             year: 'year',
             all: 'all',
-            by: 'за',
+            by: 'by',
             ['Add user to family']: 'Add user to family',
             ['Already Registered']: 'Already Registered',
             ["Don't have an account"]: "Don't have an account",

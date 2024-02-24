@@ -5,7 +5,10 @@ import cors from 'cors'
 import { sha256 } from './helpers.js'
 import dayjs from 'dayjs'
 import { periods } from './periods.js'
+import currencies from './data/currencies.js'
 // import cookieParser from 'cookie-parser'
+
+type Period = 'month' | '3 months' | '6 months' | 'year' | 'all'
 
 await mongoose.connect('mongodb://localhost:27017/testers')
 
@@ -18,8 +21,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 // app.use(cookieParser())
-
-transactionsCollection.deleteMany({ date: 'Invalid Date' })
 
 const getEmailGeneralInFamily = async (email: string) => {
     const user = await usersCollection.findOne({ email: email })
@@ -60,20 +61,19 @@ app.get('/transactions', async (req, res) => {
     const userEmail = (await getEmailGeneralInFamily(req.query.email as string)) || req.query.email
 
     const transactions = (await transactionsCollection.find({ userEmail }).toArray()).filter((trans) => {
-        // @ts-ignore
-        return periods[req.query.period](trans.date)
+        return periods[req.query.period as Period](trans.date)
     })
 
     const expenditures = transactions
         .filter((t) => t.amount < 0)
-        .sort((a, b) => Number(dayjs(a.date)) - Number(dayjs(b.date)))
+        .sort((a, b) => Number(dayjs(b.date)) - Number(dayjs(a.date)))
     const income = transactions
         .filter((t) => t.amount > 0)
-        .sort((a, b) => Number(dayjs(a.date)) - Number(dayjs(b.date)))
+        .sort((a, b) => Number(dayjs(b.date)) - Number(dayjs(a.date)))
 
-    expenditures.forEach((a) => {
-        a.amount = -a.amount
-    })
+    // expenditures.forEach((a) => {
+    //     a.amount = -a.amount
+    // })
 
     console.log('/transactions', Date.now() - dateStart, 'ms')
 
@@ -168,12 +168,15 @@ app.get('/users_in_family', async (req, res) => {
         return res.sendStatus(400)
     }
 
-    const user = await users.findOne({ email: req.query.email })
+    const user = await usersCollection.findOne({ email: req.query.email })
 
     if (!user) return res.status(400).json({ error: 'No such user' })
 
-    const thisFamily = await familiesCollection.findOne({ participants: { $all: [user._id] } })
-    // console.log(thisFamily)
+    const thisFamily = await familiesCollection.findOne({
+        participants: { $all: [user._id] },
+    })
+
+    console.log(thisFamily, user)
 
     if (!thisFamily) return res.status(400).json({ error: 'No such family' })
 
@@ -219,6 +222,8 @@ app.post('/create_transaction', async (req, res) => {
         category: req.body.category,
         date: req.body.date,
         userEmail: userEmail,
+        currency:
+            req.body.currency || (await usersCollection.findOne({ email: req.body.userEmail }))?.currency || 'RUB',
     })
 
     console.log('create transaction: ', newTransaction)
@@ -243,6 +248,7 @@ app.post('/registration', async (req, res) => {
             email,
             password: sha256(password),
             key,
+            currency: 'RUB',
         }
         const { insertedId } = await usersCollection.insertOne(user)
         const response = { ok: true, id: insertedId, ...user }
@@ -270,6 +276,37 @@ app.post('/signIn', async (req, res) => {
     }
     res.sendStatus(400)
 })
+app.post('/changeUserCurrency', (req, res) => {
+    console.log(req.body)
+
+    const dateStart = Date.now()
+    const { email, currency } = req.body
+
+    console.log(email, currency)
+
+    if (typeof email !== 'string' || typeof currency !== 'string' || !currencies.includes(currency))
+        return res.sendStatus(400)
+
+    usersCollection.updateOne({ email }, { $set: { currency } })
+
+    console.log('/changeUserCurrency', Date.now() - dateStart, 'ms')
+
+    res.sendStatus(200)
+})
+app.get('/currency', async (req, res) => {
+    const dateStart = Date.now()
+
+    const { email } = req.query
+
+    if (typeof email !== 'string') return res.send(400).json({ error: 'No such email in query' })
+    const user = await usersCollection.findOne({ email })
+    if (!user) return res.send(400).json({ error: 'No such user' })
+
+    console.log('/currency', Date.now() - dateStart, 'ms')
+
+    res.json({ currency: user.currency || 'RUB' })
+})
+
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
 })

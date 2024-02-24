@@ -1,6 +1,9 @@
 import { addUserName } from './account/addUserName'
 import { authorization } from './account/authorization'
+import { changeUserCurrency } from './account/changeUserCurrency'
+import { getUserCurrency } from './account/getUserCurrency'
 import { registration } from './account/registration'
+import { convert, getDataAboutCurrency } from './currency/convert'
 import { addUserInFamily } from './family/addUserInFamily'
 import { createFamily } from './family/createFamily'
 import { deleteUserFromFamily } from './family/deleteUserFromFamily'
@@ -20,4 +23,8 @@ export class Api {
     getUserNameById = getUserNameById
     deleteUserFromFamily = deleteUserFromFamily
     addUserName = addUserName
+    changeUserCurrency = changeUserCurrency
+    getUserCurrency = getUserCurrency
+    getDataAboutCurrency = getDataAboutCurrency
+    convert = convert
 }

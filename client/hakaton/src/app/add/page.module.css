@@ -86,6 +86,21 @@
 .comment input {
     width: 250px;
 }
+.bigCategory {
+    color: rgb(244, 244, 245);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: space-around;
+    margin: 0;
+}
+.bigCategories {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    width: fit-content;
+    gap: 10px;
+}
 
 @media (min-width: 900px) {
     .categories {

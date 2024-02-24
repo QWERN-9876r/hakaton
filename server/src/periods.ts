@@ -16,7 +16,7 @@ export const periods = {
         return Date.now() - dayjs(date).millisecond() <= 6.048e8
     },
     month(date: string) {
-        return dayjs(Date.now()).month() === dayjs(date).month()
+        return filterByMoths(date, 1)
     },
     ['3 months'](date: string) {
         return filterByMoths(date, 3)

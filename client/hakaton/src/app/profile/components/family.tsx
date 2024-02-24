@@ -78,22 +78,22 @@ const Family = () => {
                     <h5>{i18n['Add user to family']}:</h5>
                     <div>
                         <div>
-                        <TextField
-                            variant="standard"
-                            label="Email"
-                            type="email"
-                            onChange={(event) => setAddedEmail(event.target.value)}
-                        />
-                        <Button
-                            style={{ marginBottom: 10 }}
-                            color="primary"
-                            variant="contained"
-                            onClick={addUserInFamily}
-                        >
-                            {i18n.Add}
-                        </Button>
+                            <TextField
+                                variant="standard"
+                                label="Email"
+                                type="email"
+                                onChange={(event) => setAddedEmail(event.target.value)}
+                            />
+                            <Button
+                                style={{ marginBottom: 10 }}
+                                color="primary"
+                                variant="contained"
+                                onClick={addUserInFamily}
+                            >
+                                {i18n.Add}
+                            </Button>
                         </div>
-                        <div style={{marginTop: 16}} >
+                        <div style={{ marginTop: 16 }}>
                             {names.map((name, i) => (
                                 <Accordion key={name}>
                                     <AccordionSummary>{name}</AccordionSummary>

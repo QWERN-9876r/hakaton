@@ -61,7 +61,7 @@ const Profile: FunctionComponent = () => {
                         component="div"
                         sx={{
                             display: 'grid',
-                            gridTemplateRows: '100px 500px 172px',
+                            gridTemplateRows: '100px 500px 200px',
                         }}
                     >
                         <Item>

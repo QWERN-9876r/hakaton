@@ -1,9 +1,8 @@
 'use client'
 
 import { Dispatch, FunctionComponent, ReactNode, SetStateAction } from 'react'
-import { Grid, Paper } from '@mui/material'
+import { Grid } from '@mui/material'
 import styles from '../page.module.css'
-import { styled } from '@mui/material/styles'
 import Image from 'next/image'
 import categories from '@/data/categories.json'
 

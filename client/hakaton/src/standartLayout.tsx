@@ -9,6 +9,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
         <html lang="en">
             <head>
                 <meta name="viewport" content="initial-scale=1, width=device-width" />
+                {/* <script src="https://www.cbr-xml-daily.ru/money.js"></script> */}
             </head>
             <body className={`${inter.className} dark`}>
                 <Providers>

@@ -49,8 +49,8 @@ export const Footer: FunctionComponent = () => {
                 Денег нет, но вы держитесь!
             </Alert> */}
                 {PAGES_WITH_FAB.includes(currentPath) && (
-                    <Link href="/add">
-                        <Fab color="primary" aria-label="add" className={styles.fab}>
+                    <Link href="/add" className={styles.fab}>
+                        <Fab color="primary" aria-label="add">
                             <AddIcon />
                         </Fab>
                     </Link>

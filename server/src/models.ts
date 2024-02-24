@@ -5,6 +5,7 @@ export const transaction = mongoose.model(
     new Schema({
         comment: String,
         amount: Number,
+        currency: String,
         category: String,
         userEmail: String,
         date: String,
@@ -17,6 +18,7 @@ export const users = mongoose.model(
         password: String,
         name: String,
         key: String,
+        currency: String,
     }),
 )
 

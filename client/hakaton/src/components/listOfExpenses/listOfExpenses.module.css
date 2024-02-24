@@ -1,9 +1,37 @@
 .month {
-    color: azure;
+    /* color: rgb(204, 216, 216); */
+    color: rgb(214, 231, 248);
     /* width: 80vw; */
     display: flex;
-    justify-content: right;
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid white;
+    font-size: 17px;
+    /* border-bottom: 1px solid white; */
+}
+.amount {
+    position: absolute;
+    right: 50px;
+    /* color: rgb(19, 172, 19) !important; */
+}
+.date {
+    opacity: 0.9;
+    color: azure;
+    margin-top: 5px;
+}
+.category {
+    font-weight: 600;
+    color: white;
+}
+.icon {
+    margin-right: 15px;
+}
+
+@media screen and (min-width: 900px) {
+    .month {
+        width: 700px;
+    }
+    .container {
+        padding: 0 calc(50vw - 350px);
+    }
 }
