@@ -1,69 +1,69 @@
 [
     [
         {
-            "name": "шоппинг",
+            "name": "shopping",
             "icon": "/icons/shopping.png"
         },
         {
-            "name": "красота",
+            "name": "beauty",
             "icon": "/icons/beauty.png"
         },
         {
-            "name": "подарки",
+            "name": "presents",
             "icon": "/icons/presents.png"
         },
         {
-            "name": "отдых",
+            "name": "rest",
             "icon": "/icons/entertainments.png"
         },
         {
-            "name": "дом",
+            "name": "home",
             "icon": "/icons/household.png"
         },
         {
-            "name": "питомцы",
+            "name": "pets",
             "icon": "/icons/pets.png"
         },
         {
-            "name": "питание",
+            "name": "nutrition",
             "icon": "/icons/food.png"
         },
         {
-            "name": "ЖКХ",
+            "name": "HCS",
             "icon": "/icons/HCS.png"
         },
         {
-            "name": "транспорт",
+            "name": "transport",
             "icon": "/icons/transport.png"
         },
         {
-            "name": "Здоровье",
+            "name": "health",
             "icon": "/icons/health.png"
         },
         {
-            "name": "подписки",
+            "name": "subscriptions",
             "icon": "/icons/subscriptions.png"
         },
         {
-            "name": "услуги",
+            "name": "services",
             "icon": "/icons/services.png"
         }
     ],
     [
         {
-            "name": "депозит",
+            "name": "deposit",
             "icon": "/icons/deposit.png"
         },
         {
-            "name": "работа",
+            "name": "salary",
             "icon": "/icons/work.png"
         },
         {
-            "name": "инвестиции",
+            "name": "investment",
             "icon": "/icons/investment.png"
         },
         {
-            "name": "бизнес",
+            "name": "business",
             "icon": "/icons/business.png"
         }
     ]

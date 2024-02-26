@@ -13,6 +13,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/img/providers/google.svg',
             },
+            {
+                protocol: 'https',
+                hostname: 'avatars.yandex.net',
+                port: '',
+                pathname: '/get-yapic/**',
+            },
         ],
     },
 }

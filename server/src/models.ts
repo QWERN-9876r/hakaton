@@ -19,6 +19,7 @@ export const users = mongoose.model(
         name: String,
         key: String,
         currency: String,
+        language: String,
     }),
 )
 

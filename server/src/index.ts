@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import { family, transaction, users } from './models.js'
 import cors from 'cors'
 import { sha256 } from './helpers.js'
-import dayjs from 'dayjs'
+// import dayjs from 'dayjs'
 import { periods } from './periods.js'
 import currencies from './data/currencies.js'
 // import cookieParser from 'cookie-parser'
@@ -66,10 +66,10 @@ app.get('/transactions', async (req, res) => {
 
     const expenditures = transactions
         .filter((t) => t.amount < 0)
-        .sort((a, b) => Number(dayjs(b.date)) - Number(dayjs(a.date)))
+        .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
     const income = transactions
         .filter((t) => t.amount > 0)
-        .sort((a, b) => Number(dayjs(b.date)) - Number(dayjs(a.date)))
+        .sort((a, b) => Number(new Date(b.date)) - Number(new Date(b.date)))
 
     // expenditures.forEach((a) => {
     //     a.amount = -a.amount
@@ -97,7 +97,7 @@ app.post('/create_family', async (req, res) => {
     })
 
     if (await familiesCollection.findOne({ participants: { $all: [user._id] } })) {
-        return res.status(400).json({ error: 'The family already exists' })
+        return res.sendStatus(400).json({ error: 'The family already exists' })
     }
 
     console.log('create family', newFamily)
@@ -298,13 +298,41 @@ app.get('/currency', async (req, res) => {
 
     const { email } = req.query
 
-    if (typeof email !== 'string') return res.send(400).json({ error: 'No such email in query' })
+    if (typeof email !== 'string') return res.sendStatus(400).json({ error: 'No such email in query' })
     const user = await usersCollection.findOne({ email })
-    if (!user) return res.send(400).json({ error: 'No such user' })
+    if (!user) return res.sendStatus(400).json({ error: 'No such user' })
 
     console.log('/currency', Date.now() - dateStart, 'ms')
 
     res.json({ currency: user.currency || 'RUB' })
+})
+app.get('/language', async (req, res) => {
+    const dateStart = Date.now()
+
+    const { email } = req.query
+
+    if (!email) res.sendStatus(400).json({ error: 'No such email' })
+
+    const user = await usersCollection.findOne({ email })
+
+    if (!user) return res.sendStatus(400).json({ error: 'No such user' })
+
+    console.log('/language', Date.now() - dateStart, 'ms')
+
+    res.json({ lang: user.lang || 'en' })
+})
+app.post('/setLanguage', async (req, res) => {
+    const dateStart = Date.now()
+
+    const { email, lang } = req.body
+
+    if (!email || !lang) res.sendStatus(400)
+
+    await usersCollection.updateOne({ email }, { $set: { language: lang } })
+
+    console.log('/setLanguage', Date.now() - dateStart, 'ms')
+
+    res.sendStatus(200)
 })
 
 app.listen(PORT, () => {

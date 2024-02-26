@@ -1,4 +1,4 @@
-import { Currency } from '../account/getUserCurrency'
+import { Currency } from './getUserCurrency'
 
 interface Data {
     Date: string
@@ -30,7 +30,5 @@ export const getDataAboutCurrency = async () => {
 }
 
 export const convert = (amount: number, from: Currency, to: Currency) => {
-    console.log(amount, from, to, data ? fromRub(toRub(amount, from), to) : amount)
-
     return data ? fromRub(toRub(amount, from), to) : amount
 }

@@ -21,14 +21,13 @@ interface Category {
 interface Props {
     expenses: Expense[]
     isIncome: boolean
+    dict: Record<string, string>
 }
 
-export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome }) => {
-    console.log(categories.flat(), expenses)
-
+export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome, dict }) => {
     return expenses.length ? (
         <section className={styles.container}>
-            {splitByMoths(expenses).map(({ label, transactions }) => {
+            {splitByMoths(expenses, dict).map(({ label, transactions }) => {
                 return (
                     <div>
                         <h3 className={styles.month}>{label}</h3>
@@ -41,12 +40,12 @@ export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome })
                                     <AccordionSummary id="panel-header" aria-controls="panel-content">
                                         <Image
                                             className={styles.icon}
-                                            src={(categories.flat().find((c) => c.name === category) as Category).icon}
+                                            src={(categories.flat().find((c) => dict[c.name] === dict[category]))?.icon || 'categories.svg'}
                                             alt=""
                                             width={50}
                                             height={50}
                                         />
-                                        <span className={styles.category}>{category}</span>
+                                        <span className={styles.category}>{dict[category] || category}</span>
                                         <span
                                             style={{ color: isIncome ? 'rgb(19, 172, 19)' : 'azure' }}
                                             className={styles.amount}

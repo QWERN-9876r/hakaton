@@ -8,14 +8,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import type { AuthFunction, ErrorMessage } from '@/api/account/registration'
-import { i18n } from '@/data/i18n'
 
 interface Props {
     name: 'Sign Up' | 'Sign In'
     callback: AuthFunction
+    dict: Record<string, string>
 }
 
-export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback }) => {
+export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback, dict }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState<ErrorMessage | ''>('')
@@ -37,7 +37,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback })
     return (
         <section className={styles.mainInner}>
             <Card variant="outlined" className={styles.mainCard}>
-                <h1 className={styles.heading}>{i18n[name]}</h1>
+                <h1 className={styles.heading}>{dict[name]}</h1>
                 <TextField
                     variant="standard"
                     label="Email"
@@ -48,24 +48,24 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback })
                     <TextField
                         className={styles.passwordInput}
                         variant="standard"
-                        label={i18n.Password}
+                        label={dict['Password']}
                         type="password"
                         onChange={(evt) => setPassword(evt.target.value)}
                     />
                 </div>
-                {error && <p className={styles.error}>{i18n[error]}</p>}
+                {error && <p className={styles.error}>{dict['error']}</p>}
                 <section className={styles.otherLogIn}>
                     <ButtonSignIn companyName="google" imageUrl="https://authjs.dev/img/providers/google.svg" />
                     <ButtonSignIn companyName="yandex" imageUrl="yandex icon.svg" />
                 </section>
                 <Button variant="contained" color="primary" onClick={heandler}>
-                    {i18n[name]}
+                    {dict[name]}
                 </Button>
             </Card>
             <div className={styles.alreadyRegConteiner}>
                 <Link href={name === 'Sign Up' ? '/signIn' : '/signUp'}>
                     <Button variant="text" color="primary" className={styles.alreadyReg}>
-                        {name === 'Sign Up' ? i18n['Already Registered'] : i18n["Don't have an account"]}
+                        {name === 'Sign Up' ? dict['Already Registered'] : dict["Don't have an account"]}
                     </Button>
                 </Link>
             </div>

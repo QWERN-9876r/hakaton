@@ -2,7 +2,6 @@
 
 import { FunctionComponent, useEffect, useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
-// import Alert from "@mui/material/Alert"
 import Fab from '@mui/material/Fab'
 import Box from '@mui/material/Box'
 import BottomNavigation from '@mui/material/BottomNavigation'
@@ -17,38 +16,51 @@ import { useSession } from 'next-auth/react'
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom'
 import Link from 'next/link'
 import { PageLoading } from '../pageLoading/pageLoading'
-import { i18n } from '@/data/i18n'
 
 const PATHS = ['/profile', '/', '/statistic'] as const
-const PAGES_WITH_FAB = ['/', '/statistic']
+const PAGES_WITH_FAB = ['', '/statistic']
 
-export const Footer: FunctionComponent = () => {
-    const { status } = useSession()
+interface Props {
+    dict: Record<string, string>
+    lang: 'ru' | 'en'
+}
+
+export const Footer: FunctionComponent<Props> = ({ dict, lang }) => {
+    const getPath = (path: string) => `/${lang}${path}`
+    const { status, data } = useSession()
     const currentPath = usePathname()
-    const [value, setValue] = useState(PATHS.reduce((acc, path, i) => (path == currentPath ? i + acc : acc), 0))
+    const [value, setValue] = useState(
+        PATHS.reduce((acc, path, i) => (getPath(path == '/' ? '' : path) == currentPath ? i + acc : acc), 0),
+    )
     const router = useRouter()
-
     useEffect(() => {
+        console.log(PATHS[value], value)
         if (!value) {
             if (status === 'loading') return
+
             router.push(status === 'authenticated' ? '/profile' : '/signUp')
             return
         }
+
         router.push(PATHS[value])
     }, [value])
     useEffect(() => {
-        if (status === 'unauthenticated' && currentPath !== '/signUp' && currentPath !== '/signIn') {
-            router.push('/signUp')
+        // console.log(PATHS[value], value)
+        if (
+            status === 'unauthenticated' &&
+            // @ts-ignore
+            !data?.email &&
+            currentPath !== getPath('/signUp') &&
+            currentPath !== getPath('/signIn')
+        ) {
+            status === 'unauthenticated' && router.push('/signUp')
         }
     }, [status, currentPath])
 
     return (
         <footer className={styles.footer}>
             <Box sx={{ width: '100vw' }}>
-                {/* <Alert severity="warning" className='alert'>
-                Денег нет, но вы держитесь!
-            </Alert> */}
-                {PAGES_WITH_FAB.includes(currentPath) && (
+                {PAGES_WITH_FAB.map(getPath).includes(currentPath) && (
                     <Link href="/add" className={styles.fab}>
                         <Fab color="primary" aria-label="add">
                             <AddIcon />
@@ -64,15 +76,15 @@ export const Footer: FunctionComponent = () => {
                     }}
                 >
                     {status === 'loading' ? (
-                        <BottomNavigationAction label={i18n.Loading} icon={<HourglassBottomIcon />} />
+                        <BottomNavigationAction label={dict.Loading} icon={<HourglassBottomIcon />} />
                     ) : (
                         <BottomNavigationAction
-                            label={status === 'authenticated' ? i18n.Profile : i18n['Sign In']}
+                            label={status === 'authenticated' ? dict.Profile : dict['Sign In']}
                             icon={status === 'authenticated' ? <AccountCircleIcon /> : <LoginIcon />}
                         />
                     )}
-                    <BottomNavigationAction label={i18n.Home} icon={<HomeIcon />} />
-                    <BottomNavigationAction label={i18n.Statistic} icon={<BarChartIcon />} />
+                    <BottomNavigationAction label={dict['Home']} icon={<HomeIcon />} />
+                    <BottomNavigationAction label={dict['Statistic']} icon={<BarChartIcon />} />
                 </BottomNavigation>
             </Box>
         </footer>

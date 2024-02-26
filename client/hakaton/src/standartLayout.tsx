@@ -1,20 +1,29 @@
 import { Inter } from 'next/font/google'
 import { Providers } from './components/providers/providers'
 import { Footer } from './components/footer/footer'
+import { getDictionary } from './app/[lang]/dictionaries'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export function MainLayout({ children }: { children: React.ReactNode }) {
+export async function MainLayout({
+    children,
+    params: { lang },
+}: {
+    children: React.ReactNode
+    params: { lang: 'ru' | 'en' }
+}) {
+    const dict = await getDictionary(lang)
+
     return (
-        <html lang="en">
+        <html lang={lang}>
             <head>
                 <meta name="viewport" content="initial-scale=1, width=device-width" />
-                {/* <script src="https://www.cbr-xml-daily.ru/money.js"></script> */}
             </head>
             <body className={`${inter.className} dark`}>
                 <Providers>
                     {children}
-                    <Footer />
+                    <div style={{ marginBottom: 56 }}></div>
+                    <Footer dict={dict} lang={lang} />
                 </Providers>
             </body>
         </html>

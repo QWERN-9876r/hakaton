@@ -1,7 +1,7 @@
 import { addUserName } from './account/addUserName'
 import { authorization } from './account/authorization'
-import { changeUserCurrency } from './account/changeUserCurrency'
-import { getUserCurrency } from './account/getUserCurrency'
+import { changeUserCurrency } from './currency/changeUserCurrency'
+import { getUserCurrency } from './currency/getUserCurrency'
 import { registration } from './account/registration'
 import { convert, getDataAboutCurrency } from './currency/convert'
 import { addUserInFamily } from './family/addUserInFamily'
@@ -11,6 +11,8 @@ import { getUserNameById } from './family/getUserNameById'
 import { getUsersInFamily } from './family/getUsersInFamily'
 import { createTransaction } from './transactions/createTransaction'
 import { getAllTransactions } from './transactions/getAllTransactions'
+import { getUserLanguage } from './account/getUserLanguage'
+import { setUserLanguage } from './account/setUserLanguage'
 
 export class Api {
     registration = registration
@@ -27,4 +29,6 @@ export class Api {
     getUserCurrency = getUserCurrency
     getDataAboutCurrency = getDataAboutCurrency
     convert = convert
+    getUserLanguage = getUserLanguage
+    setUserLanguage = setUserLanguage
 }

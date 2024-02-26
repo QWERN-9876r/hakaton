@@ -31,13 +31,13 @@ export const authConfig: AuthOptions = {
         signIn: '/signIn',
     },
     callbacks: {
-        // async jwt({token, user, trigger, session}) {
-        //     if (trigger === 'update') {
-        //         return {...token, ...session.user}
-        //     }
+        async jwt({token, user, trigger, session}) {
+            if (trigger === 'update') {
+                return {...token, ...session.user}
+            }
 
-        //     return {...token, ...user}
-        // },
+            return {...token, ...user}
+        },
         // @ts-ignore
         async session({ token, user, trigger, session }) {
             if (trigger === 'update') {

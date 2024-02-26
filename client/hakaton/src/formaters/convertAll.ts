@@ -1,4 +1,4 @@
-import { Currency } from '@/api/account/getUserCurrency'
+import { Currency } from '@/api/currency/getUserCurrency'
 import { Api } from '@/api/main'
 import { Transaction } from '@/api/transactions/getAllTransactions'
 

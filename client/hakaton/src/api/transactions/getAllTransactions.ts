@@ -1,4 +1,4 @@
-import { Currency } from '../account/getUserCurrency'
+import { Currency } from '../currency/getUserCurrency'
 import env from '../env.json'
 
 export interface Transaction {

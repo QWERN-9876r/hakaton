@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { FunctionComponent } from 'react'
 import styles from './buttonSignIn.module.css'
 import { BuiltInProviderType } from 'next-auth/providers/index'
+import { useRouter } from 'next/navigation'
 
 interface Props {
     companyName: LiteralUnion<BuiltInProviderType>
@@ -12,13 +13,14 @@ interface Props {
 }
 
 export const ButtonSignIn: FunctionComponent<Props> = ({ companyName, imageUrl }) => {
-    const callbackUrl = '/profile'
+    const router = useRouter()
 
     return (
         <button
             className={styles.btn}
-            onClick={() => {
-                signIn(companyName, { callbackUrl })
+            onClick={async () => {
+                await signIn(companyName)
+                router.push('/profile')
             }}
         >
             <Image src={imageUrl} alt="" width={35} height={35} />
