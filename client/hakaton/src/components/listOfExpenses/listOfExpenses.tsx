@@ -40,7 +40,10 @@ export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome, d
                                     <AccordionSummary id="panel-header" aria-controls="panel-content">
                                         <Image
                                             className={styles.icon}
-                                            src={(categories.flat().find((c) => dict[c.name] === dict[category]))?.icon || 'categories.svg'}
+                                            src={
+                                                categories.flat().find((c) => dict[c.name] === dict[category])?.icon ||
+                                                'categories.svg'
+                                            }
                                             alt=""
                                             width={50}
                                             height={50}

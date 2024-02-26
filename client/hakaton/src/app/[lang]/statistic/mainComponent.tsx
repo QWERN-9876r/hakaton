@@ -68,7 +68,9 @@ export const MainComponent: FunctionComponent<Props> = ({
                     <PieChart
                         series={[
                             {
-                                data: mergeTransactionsByCategory(convertAll(transactions, mainCurrency).map(retranslate)),
+                                data: mergeTransactionsByCategory(
+                                    convertAll(transactions, mainCurrency).map(retranslate),
+                                ),
                             },
                         ]}
                         width={graficWidth - 50}
