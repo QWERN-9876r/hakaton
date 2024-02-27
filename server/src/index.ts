@@ -210,7 +210,13 @@ app.post('/create_transaction', async (req, res) => {
         return res.sendStatus(400)
     }
 
-    if (!req.body.amount || !req.body.date || !req.body.category || !req.body.userEmail || req.body.date === 'undefiend' ) {
+    if (
+        !req.body.amount ||
+        !req.body.date ||
+        !req.body.category ||
+        !req.body.userEmail ||
+        req.body.date === 'undefiend'
+    ) {
         return res.sendStatus(400)
     }
 

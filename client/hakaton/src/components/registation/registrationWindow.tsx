@@ -56,7 +56,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback, d
                 {error && <p className={styles.error}>{dict['error']}</p>}
                 <section className={styles.otherLogIn}>
                     <ButtonSignIn companyName="google" imageUrl="https://authjs.dev/img/providers/google.svg" />
-                    <ButtonSignIn companyName="yandex" imageUrl="yandex icon.svg" />
+                    <ButtonSignIn companyName="yandex" imageUrl="/yandexIcon.svg" />
                 </section>
                 <Button variant="contained" color="primary" onClick={heandler}>
                     {dict[name]}

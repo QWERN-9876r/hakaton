@@ -1,21 +1,16 @@
 import { FunctionComponent } from 'react'
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import { splitByMoths } from '@/formaters/splitByMoths'
-import Image from 'next/image'
 import styles from './listOfExpenses.module.css'
 import categories from '@/data/categories.json'
 import currencyChars from '@/data/currencyChars.json'
 
 interface Expense {
+    _id: string
     comment: string
     amount: number
     category: string
     date: string
-}
-
-interface Category {
-    name: string
-    icon: string
 }
 
 interface Props {
@@ -31,10 +26,10 @@ export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome, d
                 return (
                     <div>
                         <h3 className={styles.month}>{label}</h3>
-                        {transactions.map(({ comment, amount, category, date, currency }) => {
+                        {transactions.map(({ _id, comment, amount, category, date, currency }) => {
                             return (
                                 <Accordion
-                                    key={date + comment + amount + category}
+                                    key={_id}
                                     sx={{ width: window.innerWidth > 900 ? '700px' : '100%' }}
                                 >
                                     <AccordionSummary id="panel-header" aria-controls="panel-content">

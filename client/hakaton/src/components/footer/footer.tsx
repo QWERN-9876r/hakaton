@@ -34,7 +34,6 @@ export const Footer: FunctionComponent<Props> = ({ dict, lang }) => {
     )
     const router = useRouter()
     useEffect(() => {
-        console.log(PATHS[value], value)
         if (!value) {
             if (status === 'loading') return
 

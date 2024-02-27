@@ -38,8 +38,6 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
                     //@ts-ignore
                     const sol = await api.getAllTransactions(session.data?.email as string, period)
 
-                    console.log(sol)
-
                     if (!sol.expenditures.length && !sol.income.length) router.push('/add')
 
                     if (

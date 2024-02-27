@@ -1,5 +1,3 @@
-import { authorization } from '@/api/account/authorization'
-import { registration } from '@/api/account/registration'
 import type { AuthOptions, User } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'

@@ -32,7 +32,7 @@ const MainComponent: FunctionComponent<Props> = ({ type, handleChangeType, dict 
     const session = useSession()
 
     const createTransaction = async () => {
-        if (!amount || !currentCategory || !date) {
+        if (!amount || !currentCategory || !date.isValid()) {
             return
         }
         const ok = await api.createTransaction({

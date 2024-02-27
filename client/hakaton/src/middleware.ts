@@ -17,7 +17,12 @@ async function getLeng(languages: string[], locales: string[], defaultLocale: st
 }
 
 export async function middleware(request: NextRequest) {
-    if (request.nextUrl.pathname.includes('api') || request.nextUrl.pathname.includes('.png') || request.nextUrl.pathname.includes('.svg')) return
+    if (
+        request.nextUrl.pathname.includes('api') ||
+        request.nextUrl.pathname.includes('.png') ||
+        request.nextUrl.pathname.includes('.svg')
+    )
+        return
     const { pathname } = request.nextUrl
     const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)
 

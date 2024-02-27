@@ -2,6 +2,7 @@ import { Currency } from '../currency/getUserCurrency'
 import env from '../env.json'
 
 export interface Transaction {
+    _id: string
     comment: string
     amount: number
     currency?: Currency

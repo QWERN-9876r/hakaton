@@ -11,7 +11,7 @@ interface Props {
 export const Container: FunctionComponent<Props> = ({ dict }) => {
     return (
         <main>
-            <RegistrationWindow name="Sign In" callback={registration} dict={dict} />
+            <RegistrationWindow name="Sign Up" callback={registration} dict={dict} />
         </main>
     )
 }
