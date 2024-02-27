@@ -31,7 +31,7 @@ export const MiniChooseCategory: FunctionComponent<Props> = ({
                             onClick={() => setCurrentCategory({ name, icon })}
                             className={`${styles.minCategory} ${currentCategory?.name === name ? styles.minCurrentCategory : ''}`}
                         >
-                            <Image src={icon || 'categories.svg'} alt={name} width={50} height={50} />
+                            <img src={icon || 'categories.svg'} alt={name} width={50} height={50} />
                             {dict[name]}
                         </button>
                     ))}

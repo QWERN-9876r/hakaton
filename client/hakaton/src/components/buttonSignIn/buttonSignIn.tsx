@@ -23,7 +23,7 @@ export const ButtonSignIn: FunctionComponent<Props> = ({ companyName, imageUrl }
                 router.push('/profile')
             }}
         >
-            <Image src={imageUrl} alt="" width={35} height={35} />
+            <img src={imageUrl} alt="" width={35} height={35} />
         </button>
     )
 }

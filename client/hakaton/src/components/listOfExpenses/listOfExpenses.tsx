@@ -38,7 +38,7 @@ export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome, d
                                     sx={{ width: window.innerWidth > 900 ? '700px' : '100%' }}
                                 >
                                     <AccordionSummary id="panel-header" aria-controls="panel-content">
-                                        <Image
+                                        <img
                                             className={styles.icon}
                                             src={
                                                 categories.flat().find((c) => dict[c.name] === dict[category])?.icon ||
