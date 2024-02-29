@@ -38,11 +38,9 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
                     //@ts-ignore
                     const sol = await api.getAllTransactions(session.data?.email as string, period)
 
-                    if (!sol.expenditures.length && !sol.income.length) router.push('/add')
-
                     if (
-                        !data.expenditures.length ||
-                        (!data.income.length && sol.expenditures.length && sol.income.length)
+                        (!data.expenditures.length ||
+                        !data.income.length) && (sol.expenditures.length && sol.income.length)
                     ) {
                         setEarliestTransaction({
                             income: sol.income[sol.income.length - 1].date,
@@ -59,7 +57,7 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
 
     return (
         <>
-            {session.status === 'authenticated' && (!!data.expenditures.length || !!data.income.length) && (
+            {session.status === 'authenticated' && (!!data.expenditures.length || !!data.income.length) ? (
                 <>
                     <header>
                         <ChangeType
@@ -88,7 +86,8 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
                         )}
                     </div>
                 </>
-            )}
+            ) : <h1 className={styles.noTransactions} >{dict["you don't have a transaction"]}</h1>
+            }
         </>
     )
 }

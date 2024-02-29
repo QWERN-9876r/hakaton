@@ -8,7 +8,7 @@ import { Data } from '@/api/transactions/getAllTransactions'
 import { ChangeType } from '@/components/changeType/changeType'
 import { Api } from '@/api/main'
 import { Currency } from '@/api/currency/getUserCurrency'
-import { useRouter } from 'next/navigation'
+import styles from './page.module.css'
 
 const api = new Api()
 
@@ -24,14 +24,12 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
     const [type, setType] = useState(0)
     const [mainCurrency, setMainCurrency] = useState<Currency | ''>('')
     const session = useSession()
-    const router = useRouter()
 
     useEffect(() => {
         if (session.status === 'authenticated') {
             ;(async () => {
                 // @ts-ignore
                 const res = await api.getAllTransactions(session.data?.email)
-                if (!res.income.length && !res.expenditures.length) router.push('/add')
                 setTransactions(res)
                 // @ts-ignore
                 setMainCurrency((await api.getUserCurrency(session.data?.email))?.currency)
@@ -41,7 +39,7 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
 
     return (
         <>
-            {!!(transactions.expenditures.length || transactions.income.length) && (
+            {!!(transactions.expenditures.length || transactions.income.length) ? (
                 <>
                     {mainCurrency && <MainGrafic transactions={transactions} mainCurrency={mainCurrency} dict={dict} />}
                     <ChangeType
@@ -58,6 +56,10 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
                     />
                     <div style={{ marginBottom: 56 }}></div>
                 </>
+            ) : (
+                session.status === 'authenticated' ? <section>
+                    <h1 className={styles.noTransactions} >{dict["you don't have a transaction"]}</h1>
+                </section> : null
             )}
         </>
     )

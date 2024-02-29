@@ -41,7 +41,7 @@ const MainComponent: FunctionComponent<Props> = ({ type, handleChangeType, dict 
             category: currentCategory?.name,
             date: String(date),
             //@ts-ignore
-            userEmail: session.data?.email as string,
+            userEmail: session.data?.email,
         })
 
         ok && router.push('/')
@@ -101,30 +101,6 @@ const MainComponent: FunctionComponent<Props> = ({ type, handleChangeType, dict 
                     />
 
                     <Box>
-                        {/* <button
-                        className="invisible"
-                        onClick={() => {
-                            setCurrentCategory(undefined)
-                        }}
-                    >
-                        {currentCategory && (
-                            <Card className={styles.currentCategory}>
-                                {currentCategory.icon && (
-                                    <CardMedia
-                                        component="img"
-                                        height="140"
-                                        image={currentCategory.icon}
-                                        alt={currentCategory.name}
-                                    />
-                                )}
-                                <CardContent>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                        {currentCategory.name}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        )}
-                    </button> */}
                         <section className={styles.inputs}>
                             <div className={styles.changeDateDiv}>
                                 <DatePicker value={dayjs(date)} onChange={(value) => setDate(value as dayjs.Dayjs)} />

@@ -73,8 +73,8 @@ export const MainComponent: FunctionComponent<Props> = ({
                                 ),
                             },
                         ]}
-                        width={graficWidth - 50}
-                        height={window.innerWidth >= 900 ? graficWidth - 200 : 250}
+                        width={graficWidth}
+                        height={window.innerWidth >= 900 ? graficWidth - 200 : 300}
                     />
                 )}
             </div>

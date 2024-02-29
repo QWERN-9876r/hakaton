@@ -75,10 +75,10 @@ export const Footer: FunctionComponent<Props> = ({ dict, lang }) => {
                     }}
                 >
                     {status === 'loading' ? (
-                        <BottomNavigationAction label={dict.Loading} icon={<HourglassBottomIcon />} />
+                        <BottomNavigationAction label={dict['Loading']} icon={<HourglassBottomIcon />} />
                     ) : (
                         <BottomNavigationAction
-                            label={status === 'authenticated' ? dict.Profile : dict['Sign In']}
+                            label={status === 'authenticated' ? dict['Profile'] : dict['Sign In']}
                             icon={status === 'authenticated' ? <AccountCircleIcon /> : <LoginIcon />}
                         />
                     )}

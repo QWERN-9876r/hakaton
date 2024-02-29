@@ -20,7 +20,8 @@ export async function middleware(request: NextRequest) {
     if (
         request.nextUrl.pathname.includes('api') ||
         request.nextUrl.pathname.includes('.png') ||
-        request.nextUrl.pathname.includes('.svg')
+        request.nextUrl.pathname.includes('.svg') ||
+        request.nextUrl.pathname.includes('.ico')
     )
         return
     const { pathname } = request.nextUrl

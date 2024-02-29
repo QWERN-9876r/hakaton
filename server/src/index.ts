@@ -3,10 +3,8 @@ import mongoose from 'mongoose'
 import { family, transaction, users } from './models.js'
 import cors from 'cors'
 import { sha256 } from './helpers.js'
-// import dayjs from 'dayjs'
 import { periods } from './periods.js'
 import currencies from './data/currencies.js'
-// import cookieParser from 'cookie-parser'
 
 type Period = 'month' | '3 months' | '6 months' | 'year' | 'all'
 
@@ -20,7 +18,6 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
-// app.use(cookieParser())
 
 const getEmailGeneralInFamily = async (email: string) => {
     const user = await usersCollection.findOne({ email: email })
@@ -70,10 +67,6 @@ app.get('/transactions', async (req, res) => {
     const income = transactions
         .filter((t) => t.amount > 0)
         .sort((a, b) => Number(new Date(b.date)) - Number(new Date(b.date)))
-
-    // expenditures.forEach((a) => {
-    //     a.amount = -a.amount
-    // })
 
     console.log('/transactions', Date.now() - dateStart, 'ms')
 
@@ -231,8 +224,6 @@ app.post('/create_transaction', async (req, res) => {
         currency:
             req.body.currency || (await usersCollection.findOne({ email: req.body.userEmail }))?.currency || 'RUB',
     })
-
-    console.log('create transaction: ', newTransaction)
 
     transactionsCollection.insertOne(newTransaction)
 

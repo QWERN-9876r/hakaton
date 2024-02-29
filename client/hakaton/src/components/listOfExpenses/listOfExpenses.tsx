@@ -28,10 +28,7 @@ export const ListOfExpenses: FunctionComponent<Props> = ({ expenses, isIncome, d
                         <h3 className={styles.month}>{label}</h3>
                         {transactions.map(({ _id, comment, amount, category, date, currency }) => {
                             return (
-                                <Accordion
-                                    key={_id}
-                                    sx={{ width: window.innerWidth > 900 ? '700px' : '100%' }}
-                                >
+                                <Accordion key={_id} sx={{ width: window.innerWidth > 900 ? '700px' : '100%' }}>
                                     <AccordionSummary id="panel-header" aria-controls="panel-content">
                                         <img
                                             className={styles.icon}

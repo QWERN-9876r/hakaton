@@ -58,6 +58,7 @@
     "Add user to family": "Добавить пользователя в семью",
     "Already Registered": "Уже есть аккаунт",
     "Don't have an account": "Нет аккаунта",
+    "you don't have a transaction": "у вас нет транзакция",
     "Password must be at least 8 characters long": "Пароль должен иметь длинну не меньше 8 символов",
     "Invalid email": "Неверный email",
     "Ivalid response": "Неверный ответ",

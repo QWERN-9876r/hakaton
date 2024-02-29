@@ -33,6 +33,10 @@
     display: flex;
     justify-content: center;
 }
+.noTransactions {
+    color: azure;
+    margin: 15px;
+}
 
 @keyframes show {
     from {

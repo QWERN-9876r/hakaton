@@ -13,3 +13,7 @@
 .main {
     margin: 0;
 }
+.noTransactions {
+    color: azure;
+    margin: 15px;
+}
