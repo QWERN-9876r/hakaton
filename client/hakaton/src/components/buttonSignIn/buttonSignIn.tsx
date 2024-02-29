@@ -12,7 +12,7 @@ interface Props {
     imageUrl: string
 }
 
-const api = new Api
+const api = new Api()
 
 export const ButtonSignIn: FunctionComponent<Props> = ({ companyName, imageUrl }) => {
     const session = useSession()
@@ -21,11 +21,11 @@ export const ButtonSignIn: FunctionComponent<Props> = ({ companyName, imageUrl }
         <button
             className={styles.btn}
             onClick={async () => {
-                const res = await signIn(companyName, { callbackUrl: '/profile' })
-                if (res?.ok) {
+                queueMicrotask(() => {
                     // @ts-ignore
-                    await api.registration({email: session.data.email, password: sha256(Math.random())})
-                }
+                    await api.registration({ email: session.data.email, password: sha256(Math.random()) })
+                })
+                const res = await signIn(companyName, { callbackUrl: '/profile' })
             }}
         >
             <img src={imageUrl} alt="" width={35} height={35} />
