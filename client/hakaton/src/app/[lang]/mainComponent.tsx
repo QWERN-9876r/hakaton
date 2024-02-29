@@ -23,6 +23,7 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
     })
     const [type, setType] = useState(0)
     const [mainCurrency, setMainCurrency] = useState<Currency | ''>('')
+    const [transactionsWasGet, setTransactionsWasGet] = useState(false)
     const session = useSession()
 
     useEffect(() => {
@@ -31,6 +32,7 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
                 // @ts-ignore
                 const res = await api.getAllTransactions(session.data?.email)
                 setTransactions(res)
+                setTransactionsWasGet(true)
                 // @ts-ignore
                 setMainCurrency((await api.getUserCurrency(session.data?.email))?.currency)
             })()
@@ -56,10 +58,10 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
                     />
                     <div style={{ marginBottom: 56 }}></div>
                 </>
-            ) : (
-                session.status === 'authenticated' ? <section>
-                    <h1 className={styles.noTransactions} >{dict["you don't have a transaction"]}</h1>
-                </section> : null
+            ) : transactionsWasGet && (
+                <section>
+                    <h1 className={styles.noTransactions}>{dict["you don't have a transaction"]}</h1>
+                </section>
             )}
         </>
     )

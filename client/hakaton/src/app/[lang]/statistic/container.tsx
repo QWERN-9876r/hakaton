@@ -29,6 +29,7 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
     const [type, setType] = useState(0)
     const session = useSession()
     const [period, setPeriod] = useState<Period | ''>('')
+    const [dataWasGet, setDataWasGet] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
@@ -39,14 +40,16 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
                     const sol = await api.getAllTransactions(session.data?.email as string, period)
 
                     if (
-                        (!data.expenditures.length ||
-                        !data.income.length) && (sol.expenditures.length && sol.income.length)
+                        (!data.expenditures.length || !data.income.length) &&
+                        sol.expenditures.length &&
+                        sol.income.length
                     ) {
                         setEarliestTransaction({
                             income: sol.income[sol.income.length - 1].date,
                             expenditures: sol.expenditures[sol.income.length - 1].date,
                         })
                     }
+                    setDataWasGet(true)
                     setData(sol)
                 }
             })()
@@ -86,8 +89,9 @@ export const Container: FunctionComponent<Props> = ({ dict }) => {
                         )}
                     </div>
                 </>
-            ) : <h1 className={styles.noTransactions} >{dict["you don't have a transaction"]}</h1>
-            }
+            ) : (
+                dataWasGet && <h1 className={styles.noTransactions}>{dict["you don't have a transaction"]}</h1>
+            )}
         </>
     )
 }

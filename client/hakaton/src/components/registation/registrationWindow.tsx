@@ -19,7 +19,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback, d
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState<ErrorMessage | ''>('')
-    const router = useRouter()
+    console.log(error);
 
     const heandler = async () => {
         const res = await callback({ email, password })
@@ -29,8 +29,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback, d
         } else {
             const { email, id, name, key } = res
 
-            router.push('/profile')
-            signIn('credentials', { email, id, name: name || '', key })
+            signIn('credentials', { email, id, name: name || '', key, callbackUrl: '/profile' })
         }
     }
 
@@ -53,7 +52,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback, d
                         onChange={(evt) => setPassword(evt.target.value)}
                     />
                 </div>
-                {error && <p className={styles.error}>{dict['error']}</p>}
+                {error && <p className={styles.error}>{dict[error]}</p>}
                 <section className={styles.otherLogIn}>
                     <ButtonSignIn companyName="google" imageUrl="https://authjs.dev/img/providers/google.svg" />
                     <ButtonSignIn companyName="yandex" imageUrl="/yandexIcon.svg" />
