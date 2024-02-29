@@ -23,7 +23,7 @@ export const ButtonSignIn: FunctionComponent<Props> = ({ companyName, imageUrl }
             onClick={async () => {
                 queueMicrotask(() => {
                     // @ts-ignore
-                    await api.registration({ email: session.data.email, password: sha256(Math.random()) })
+                    api.registration({ email: session.data.email, password: sha256(Math.random()) })
                 })
                 const res = await signIn(companyName, { callbackUrl: '/profile' })
             }}
