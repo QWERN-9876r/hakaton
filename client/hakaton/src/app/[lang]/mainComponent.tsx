@@ -58,10 +58,12 @@ export const MainComponent: FunctionComponent<Props> = ({ dict }) => {
                     />
                     <div style={{ marginBottom: 56 }}></div>
                 </>
-            ) : transactionsWasGet && (
-                <section>
-                    <h1 className={styles.noTransactions}>{dict["you don't have a transaction"]}</h1>
-                </section>
+            ) : (
+                transactionsWasGet && (
+                    <section>
+                        <h1 className={styles.noTransactions}>{dict["you don't have a transaction"]}</h1>
+                    </section>
+                )
             )}
         </>
     )

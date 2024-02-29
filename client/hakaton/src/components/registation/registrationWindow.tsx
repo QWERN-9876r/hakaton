@@ -19,7 +19,7 @@ export const RegistrationWindow: FunctionComponent<Props> = ({ name, callback, d
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState<ErrorMessage | ''>('')
-    console.log(error);
+    console.log(error)
 
     const heandler = async () => {
         const res = await callback({ email, password })

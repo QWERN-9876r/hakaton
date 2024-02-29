@@ -15,7 +15,7 @@ export const ButtonSignIn: FunctionComponent<Props> = ({ companyName, imageUrl }
         <button
             className={styles.btn}
             onClick={async () => {
-                await signIn(companyName, {callbackUrl: '/profile'})
+                await signIn(companyName, { callbackUrl: '/profile' })
             }}
         >
             <img src={imageUrl} alt="" width={35} height={35} />

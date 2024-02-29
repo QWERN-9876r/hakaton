@@ -19,6 +19,18 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+async function addUser(email: string, password: string) {
+    const key = sha256(JSON.stringify({ email, password }))
+    const user = {
+        email,
+        password: sha256(password),
+        key,
+        currency: 'RUB',
+    }
+    const { insertedId } = await usersCollection.insertOne(user)
+    return { ok: true, id: insertedId, ...user }
+}
+
 const getEmailGeneralInFamily = async (email: string) => {
     const user = await usersCollection.findOne({ email: email })
     if (!user) return null
@@ -240,15 +252,7 @@ app.post('/registration', async (req, res) => {
         if (await usersCollection.findOne({ email })) {
             return res.json({ ok: false, error: 'Email already in use' })
         }
-        const key = sha256(JSON.stringify({ email, password }))
-        const user = {
-            email,
-            password: sha256(password),
-            key,
-            currency: 'RUB',
-        }
-        const { insertedId } = await usersCollection.insertOne(user)
-        const response = { ok: true, id: insertedId, ...user }
+        const response = await addUser(email, password)
 
         console.log('/registration', Date.now() - dateStart, 'ms')
 
@@ -296,8 +300,7 @@ app.get('/currency', async (req, res) => {
     const { email } = req.query
 
     if (typeof email !== 'string') return res.sendStatus(400).json({ error: 'No such email in query' })
-    const user = await usersCollection.findOne({ email })
-    if (!user) return res.sendStatus(400).json({ error: 'No such user' })
+    const user = (await usersCollection.findOne({ email })) || (await addUser(email, sha256(String(Math.random()))))
 
     console.log('/currency', Date.now() - dateStart, 'ms')
 
